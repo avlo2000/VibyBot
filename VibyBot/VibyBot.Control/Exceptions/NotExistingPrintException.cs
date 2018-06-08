@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VibyBot.Control.ManagerConfiguration
+namespace VibyBot.Control.Exceptions
 {
-    static public class CardNumber
+    class NotExistingPrintException : Exception
     {
-        static public string Number { get; set; }
     }
 }

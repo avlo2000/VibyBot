@@ -11,6 +11,8 @@ namespace VibyBot.Control.DTO
     public class Order
     {
         //поля мають заповнюватися в тому порядку в якому вони написані
+        public int ClientId { get; private set; }
+
         public ClothesType Type { get; set; }
 
         private string _print;
@@ -24,20 +26,26 @@ namespace VibyBot.Control.DTO
                     if (value == print)
                         _print = value;
                 if (_print == null)
-                    throw new UnexistingPrintException();
+                    throw new NotExistingPrintException();
             }
         }
 
-        private string _color;
-        public string Color
+        private ClothesColor _color;
+        public ClothesColor Color
         {
             get => _color;
             set
             {
                 if (Type == ClothesType.Tshirt)
                     _color = value;
-                else
-                    throw new NotTshirtColorException();
+                else if (Type == ClothesType.Polo && value == ClothesColor.Yellow)
+                    throw new WrongColorException();
+                else if (Type == ClothesType.Polo && value != ClothesColor.Yellow)
+                    _color = value;
+                else if (Type == ClothesType.Cap && (value == ClothesColor.Yellow || value == ClothesColor.White))
+                    throw new WrongColorException();
+                else if (Type == ClothesType.Cap && value == ClothesColor.Black)
+                    _color = value;
             }
         }
 
@@ -50,9 +58,10 @@ namespace VibyBot.Control.DTO
 
         public string CardNumber { get; private set; }
 
-        public Order()
+        public Order(int id)
         {
             CardNumber = ManagerConfiguration.CardNumber.Number;
+            ClientId = id;
         }
     }
 }

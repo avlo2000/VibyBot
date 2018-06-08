@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VibyBot.Control.Exceptions
 {
-    public class NotTshirtColorException : Exception
+    public class WrongColorException : Exception
     {
     }
 }

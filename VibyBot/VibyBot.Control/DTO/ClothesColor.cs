@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VibyBot.Control.Exceptions
+namespace VibyBot.Control.DTO
 {
-    class UnexistingPrintException : Exception
+    public enum ClothesColor
     {
+        White, Black, Yellow
     }
 }
