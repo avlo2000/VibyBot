@@ -22,7 +22,7 @@ namespace VibyBot.Control.DTO
             set
             {
                 _print = null;
-                foreach (var print in PrintList.Prints)
+                foreach (var print in ManagerConfig.Prints)
                     if (value == print)
                         _print = value;
                 if (_print == null)
@@ -60,7 +60,7 @@ namespace VibyBot.Control.DTO
 
         public Order(int id)
         {
-            CardNumber = ManagerConfiguration.CardNumber.Number;
+            CardNumber = ManagerConfig.CardNumber;
             ClientId = id;
         }
     }
