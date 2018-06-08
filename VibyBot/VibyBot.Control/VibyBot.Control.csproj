@@ -40,10 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManagerConfiguration\CardNumber.cs" />
+    <Compile Include="DTO\ClothesType.cs" />
+    <Compile Include="DTO\Order.cs" />
+    <Compile Include="DTO\PaymentType.cs" />
+    <Compile Include="ManagerConfiguration\PrintList.cs" />
+    <Compile Include="Exceptions\NotTshirtColorException.cs" />
+    <Compile Include="Exceptions\UnexistingPrintException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DTO\" />
     <Folder Include="MessageProcessing\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
