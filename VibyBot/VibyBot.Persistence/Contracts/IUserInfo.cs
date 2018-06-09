@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VibyBot.Control.DTO;
+using VibyBot.Persistence.DTO;
 
-namespace VibyBot.Control.Contracts
+namespace VibyBot.Persistence.Contracts
 {
     //за цими домовленостями буде проводитися взаємодія з базою данних
     public interface IUserInfo

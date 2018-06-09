@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VibyBot.Control.DTO
+namespace VibyBot.Persistence.DTO.Additional
 {
-    public enum ClothesType
+    public enum ClothesColor
     {
-        Tshirt, Cap, Polo
+        White, Black, Yellow
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
-using VibyBot.Control.ManagerConfiguration;
+using VibyBot.Persistence.ManagerConfiguration;
 
-namespace VibyBot.Control.CommandProcessing
+namespace VibyBot.Persistence.CommandProcessing
 {
     //ця команда особлива, оскільки вона надає адмін доступ
     public class AccessCommand : Command
@@ -17,28 +17,20 @@ namespace VibyBot.Control.CommandProcessing
         public override void Execute(Message message, TelegramBotClient client)
         {
             var chatId = message.Chat.Id;
+            Answer = "Access allowed";
 
             //тут у випадку якщо юзеру надано доступ його записують в бд як адміна
             object locker = new object();
             if (Contains(message.Text))
-                lock(locker)
+                lock (locker)
                     UserInformation.SetAdminAccess(chatId);
-                
+
             client.SendTextMessageAsync(chatId, Answer);
         }
 
         public override bool Contains(string command)
         {
-            if (command.Contains(Name) && command.Contains(ManagerConfig.Password))
-            {
-                Answer = "Access allowed";
-                return true;
-            }
-            else
-            {
-                Answer = "Access denied";
-                return false;
-            }
+            return (command.Contains(Name) && command.Contains(ManagerConfig.Password));
         }
     }
 }

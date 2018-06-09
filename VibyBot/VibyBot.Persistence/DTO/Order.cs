@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VibyBot.Control.Exceptions;
-using VibyBot.Control.ManagerConfiguration;
+﻿using VibyBot.Persistence.DTO.Additional;
+using VibyBot.Persistence.Exceptions;
+using VibyBot.Persistence.ManagerConfiguration;
 
-namespace VibyBot.Control.DTO
+namespace VibyBot.Persistence.DTO
 {
     public class Order
     {

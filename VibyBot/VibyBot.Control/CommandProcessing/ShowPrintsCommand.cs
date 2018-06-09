@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Telegram.Bot;
+﻿using Telegram.Bot;
 using Telegram.Bot.Types;
-using VibyBot.Control.ManagerConfiguration;
+using VibyBot.Persistence.ManagerConfiguration;
 
-namespace VibyBot.Control.CommandProcessing
+namespace VibyBot.Persistence.CommandProcessing
 {
     public class ShowPrintsCommand : Command
     {

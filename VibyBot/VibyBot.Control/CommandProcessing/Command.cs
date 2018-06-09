@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Telegram.Bot;
+﻿using Telegram.Bot;
 using Telegram.Bot.Types;
-using VibyBot.Control.Contracts;
+using VibyBot.Persistence.Contracts;
 
-namespace VibyBot.Control.CommandProcessing
+namespace VibyBot.Persistence.CommandProcessing
 {
     abstract public class Command
     {
         public abstract string Name { get; }
 
+        abstract public void Execute(Message message, TelegramBotClient client);
+
         public string Answer { get; protected set; }
 
         public IUserInfo UserInformation;
-
-        abstract public void Execute(Message message, TelegramBotClient client);
 
         public virtual bool Contains(string command)
         {

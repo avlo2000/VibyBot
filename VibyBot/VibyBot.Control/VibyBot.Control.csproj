@@ -49,18 +49,16 @@
     <Compile Include="CommandProcessing\AccessCommand.cs" />
     <Compile Include="CommandProcessing\AddPrintCommand.cs" />
     <Compile Include="CommandProcessing\Command.cs" />
+    <Compile Include="CommandProcessing\SetCreditCardCommand.cs" />
     <Compile Include="CommandProcessing\ShowPrintsCommand.cs" />
-    <Compile Include="Contracts\IUserInfo.cs" />
-    <Compile Include="DTO\Additional\ClothesColor.cs" />
-    <Compile Include="DTO\Additional\ClothesType.cs" />
-    <Compile Include="DTO\Order.cs" />
-    <Compile Include="DTO\Additional\PaymentType.cs" />
-    <Compile Include="ManagerConfiguration\ManagerConfig.cs" />
-    <Compile Include="Exceptions\WrongColorException.cs" />
-    <Compile Include="Exceptions\NotExistingPrintException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\VibyBot.Persistence\VibyBot.Persistence.csproj">
+      <Project>{5199d50e-6b00-4412-aa4e-a6677a17c50b}</Project>
+      <Name>VibyBot.Persistence</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

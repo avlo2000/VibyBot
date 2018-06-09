@@ -10,7 +10,7 @@ namespace VibyBot.TelegramAPI.Controllers
     {
         public string Index()
         {
-            return "Viby telegram bot.";
+            return "VIBY bot";
         }
     }
 }

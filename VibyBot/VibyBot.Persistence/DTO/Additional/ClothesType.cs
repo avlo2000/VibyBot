@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VibyBot.Control.Exceptions
+namespace VibyBot.Persistence.DTO.Additional
 {
-    class NotExistingPrintException : Exception
+    public enum ClothesType
     {
+        Tshirt, Cap, Polo
     }
 }
