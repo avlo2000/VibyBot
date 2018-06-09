@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -38,13 +41,30 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Telegram.Bot, Version=14.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telegram.Bot.14.5.0\lib\net45\Telegram.Bot.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandProcessing\AccessCommand.cs" />
+    <Compile Include="CommandProcessing\AddPrintCommand.cs" />
+    <Compile Include="CommandProcessing\Command.cs" />
+    <Compile Include="CommandProcessing\SetCreditCardCommand.cs" />
+    <Compile Include="CommandProcessing\ShowPrintsCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DTO\" />
-    <Folder Include="MessageProcessing\" />
+    <ProjectReference Include="..\VibyBot.Persistence\VibyBot.Persistence.csproj">
+      <Project>{5199d50e-6b00-4412-aa4e-a6677a17c50b}</Project>
+      <Name>VibyBot.Persistence</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CommandProcessing\README.txt" />
+    <Content Include="OrderProcessing\README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
