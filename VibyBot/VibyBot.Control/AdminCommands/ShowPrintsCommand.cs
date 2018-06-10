@@ -2,7 +2,7 @@
 using Telegram.Bot.Types;
 using VibyBot.Persistence.ManagerConfiguration;
 
-namespace VibyBot.Persistence.CommandProcessing
+namespace VibyBot.Conrol.AdminCommands
 {
     public class ShowPrintsCommand : Command
     {
