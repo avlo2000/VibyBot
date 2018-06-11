@@ -1,9 +1,11 @@
-﻿namespace VibyBot.Persistence.Contracts
+﻿using VibyBot.Persistence.DTO;
+
+namespace VibyBot.Persistence.Contracts
 {
     public interface IManagementStorage
     {
-        void RestoreConfig(); //цей метод заміняє доля в ManagerConfig на ті що в базі
+        ManagerInfo GetConfig(); 
 
-        void UpdateConfig(); //цей метод заміняє конфіг у базі на боточний зонфіг з ManagerConfig 
+        void UpdateConfig(ManagerInfo info); 
     }
 }

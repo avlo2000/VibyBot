@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
-using VibyBot.Persistence.ManagerConfiguration;
+using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Conrol.AdminCommands
 {
@@ -9,18 +11,22 @@ namespace VibyBot.Conrol.AdminCommands
     {
         public override string Name => @"/showprints";
 
-        public override void Execute(Message message, TelegramBotClient client)
+        public async override Task Execute(Message message, TelegramBotClient client)
         {
             Answer = "Дотупні принти:" + Environment.NewLine;
             var chatId = message.Chat.Id;
 
-            foreach (var print in ManagerConfig.Prints)
+            foreach (var print in _managerInfo.Prints)
             {
                 Answer += print;
                 Answer += Environment.NewLine;
             }
 
-            client.SendTextMessageAsync(chatId, Answer);
+            await client.SendTextMessageAsync(chatId, Answer);
+        }
+
+        public ShowPrintsCommand(IManagementStorage managementStorage) : base(managementStorage)
+        {
         }
     }
 }

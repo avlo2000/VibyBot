@@ -18,11 +18,11 @@ namespace VibyBot.TelegramAPI.Controllers
         {
             var commands = Bot.Commands;
             var message = update.Message;
-            var client = await Bot.GetAsync();
+            var client = await Bot.GetAsync(/*there  must be given implementation for IManagementStorage*/);
             foreach(var command in commands)
                 if (command.Contains(message.Text))
                 {
-                    command.Execute(message, client);
+                    await command.Execute(message, client);
                     break;
                 }
 

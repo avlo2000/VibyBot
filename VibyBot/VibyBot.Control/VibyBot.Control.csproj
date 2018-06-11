@@ -48,11 +48,10 @@
   <ItemGroup>
     <Compile Include="AdminCommands\AccessCommand.cs" />
     <Compile Include="AdminCommands\AddPrintCommand.cs" />
-    <Compile Include="AdminCommands\GetCardCommand.cs" />
     <Compile Include="AdminCommands\RemovePrintCommand.cs" />
     <Compile Include="Command.cs" />
-    <Compile Include="AdminCommands\SetCardCommand.cs" />
     <Compile Include="AdminCommands\ShowPrintsCommand.cs" />
+    <Compile Include="OrderSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,8 @@
-﻿using Telegram.Bot;
+﻿using System.Threading.Tasks;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Conrol
 {
@@ -8,7 +10,7 @@ namespace VibyBot.Conrol
     {
         public abstract string Name { get; }
 
-        abstract public void Execute(Message message, TelegramBotClient client);
+        abstract public Task Execute(Message message, TelegramBotClient client);
 
         public string Answer { get; protected set; }
 
@@ -17,6 +19,15 @@ namespace VibyBot.Conrol
         public virtual bool Contains(string command)
         {
             return command.Contains(Name);
+        }
+
+        protected ManagerInfo _managerInfo;
+        protected IManagementStorage _managementStorage;
+
+        public Command(IManagementStorage managementStorage)
+        {
+            _managementStorage = managementStorage;
+           _managerInfo = _managementStorage.GetConfig();
         }
     }
 }
