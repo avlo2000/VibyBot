@@ -54,10 +54,13 @@ namespace VibyBot.Persistence.DTO
 
         public string CardNumber { get; private set; }
 
+        public bool Ready { get; set; }
+
         public Order(int id)
         {
             CardNumber = ManagerConfig.CardNumber;
             ClientId = id;
+            Ready = false;
         }
     }
 }

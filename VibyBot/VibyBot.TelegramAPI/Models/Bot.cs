@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Telegram.Bot;
-using VibyBot.Persistence.CommandProcessing;
+using VibyBot.Conrol;
+using VibyBot.Conrol.AdminCommands;
 
 namespace VibyBot.TelegramAPI.Models
 {

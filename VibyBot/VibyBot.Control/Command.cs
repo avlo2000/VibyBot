@@ -2,7 +2,7 @@
 using Telegram.Bot.Types;
 using VibyBot.Persistence.Contracts;
 
-namespace VibyBot.Persistence.CommandProcessing
+namespace VibyBot.Conrol
 {
     abstract public class Command
     {

@@ -10,10 +10,12 @@ namespace VibyBot.Persistence.Contracts
     //за цими домовленостями буде проводитися взаємодія з базою данних
     public interface IUserInfo
     {
-        Order CurrentOrder(long UserId);
+        Order CurrentOrder(long userId);
 
-        bool GetAdminAccess(long UserId);
+        bool GetAdminAccess(long userId);
 
-        void SetAdminAccess(long UserId);
+        void SetAdminAccess(long userId);
+
+        void UpdateOrder(long userId, Order oreder);
     }
 }
