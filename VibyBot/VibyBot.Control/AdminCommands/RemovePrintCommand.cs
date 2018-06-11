@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using VibyBot.Conrol;
+using VibyBot.Persistence.ManagerConfiguration;
 
 namespace VibyBot.Control.AdminCommands
 {
@@ -15,7 +16,18 @@ namespace VibyBot.Control.AdminCommands
 
         public override void Execute(Message message, TelegramBotClient client)
         {
-            throw new NotImplementedException();
+            var splCommand = message.Text.Split(' ');
+            var chatId = message.Chat.Id;
+
+            if (UserInfo.GetAdminAccess(chatId))
+            {
+                ManagerConfig.Prints.Remove(splCommand[1]);
+                Answer = "Принт видалено.";
+            }
+            else
+                Answer = "Немає дозволу.";
+
+            client.SendTextMessageAsync(chatId, Answer);
         }
     }
 }
