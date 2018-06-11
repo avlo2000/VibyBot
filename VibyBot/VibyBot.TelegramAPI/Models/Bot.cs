@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Telegram.Bot;
-using VibyBot.Persistence.CommandProcessing;
+using VibyBot.Conrol;
+using VibyBot.Conrol.AdminCommands;
+using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.TelegramAPI.Models
 {
@@ -15,21 +17,33 @@ namespace VibyBot.TelegramAPI.Models
 
         public static IReadOnlyList<Command> Commands { get => _commandsList.AsReadOnly(); }
 
-        public static void RegistateCommands()
+        public static void RegistateCommands(IManagementStorage managementStorage)
         {
             _commandsList = new List<Command>();
-            _commandsList.Add(new AccessCommand());
-            _commandsList.Add(new SetCreditCardCommand());
-            _commandsList.Add(new AddPrintCommand());
-            _commandsList.Add(new ShowPrintsCommand());
+            _commandsList.Add(new AccessCommand(managementStorage));
+            _commandsList.Add(new AddPrintCommand(managementStorage));
+            _commandsList.Add(new ShowPrintsCommand(managementStorage));
         }
 
-        public static async Task<TelegramBotClient>GetAsync()
+        public static async Task<TelegramBotClient>GetAsync(IManagementStorage managementStorage)
         {
             if (_client != null)
                 return _client;
 
-            RegistateCommands();
+            RegistateCommands(managementStorage);
+
+            _client = new TelegramBotClient(AppSettings.Key);
+
+            var webHook = string.Concat(AppSettings.Url, "api/message/update");
+            await _client.SetWebhookAsync(webHook);
+
+            return _client;
+        }
+
+        public static async Task<TelegramBotClient> GetAsync()
+        {
+            if (_client != null)
+                return _client;
 
             _client = new TelegramBotClient(AppSettings.Key);
 

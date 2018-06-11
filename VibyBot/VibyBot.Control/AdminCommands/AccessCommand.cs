@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
-using VibyBot.Persistence.ManagerConfiguration;
+using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 
-namespace VibyBot.Persistence.CommandProcessing
+namespace VibyBot.Conrol.AdminCommands
 {
     //ця команда особлива, оскільки вона надає адмін доступ
     public class AccessCommand : Command
     {
         public override string Name => @"/admin";
 
-        public override void Execute(Message message, TelegramBotClient client)
+        public async override Task Execute(Message message, TelegramBotClient client)
         {
             var chatId = message.Chat.Id;
             Answer = "Access allowed";
@@ -23,14 +24,18 @@ namespace VibyBot.Persistence.CommandProcessing
             object locker = new object();
             if (Contains(message.Text))
                 lock (locker)
-                    UserInformation.SetAdminAccess(chatId);
+                    UserInfo.SetAdminAccess(chatId);
 
-            client.SendTextMessageAsync(chatId, Answer);
+            await client.SendTextMessageAsync(chatId, Answer);
         }
 
         public override bool Contains(string command)
         {
-            return (command.Contains(Name) && command.Contains(ManagerConfig.Password));
+            return (command.Contains(Name) && command.Contains(_managerInfo.Password));
+        }
+
+        public AccessCommand(IManagementStorage managementStorage) : base(managementStorage)
+        {
         }
     }
 }

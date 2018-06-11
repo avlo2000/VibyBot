@@ -46,11 +46,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandProcessing\AccessCommand.cs" />
-    <Compile Include="CommandProcessing\AddPrintCommand.cs" />
-    <Compile Include="CommandProcessing\Command.cs" />
-    <Compile Include="CommandProcessing\SetCreditCardCommand.cs" />
-    <Compile Include="CommandProcessing\ShowPrintsCommand.cs" />
+    <Compile Include="AdminCommands\AccessCommand.cs" />
+    <Compile Include="AdminCommands\AddPrintCommand.cs" />
+    <Compile Include="AdminCommands\RemovePrintCommand.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="AdminCommands\ShowPrintsCommand.cs" />
+    <Compile Include="OrderSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,8 +64,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CommandProcessing\README.txt" />
-    <Content Include="OrderProcessing\README.txt" />
+    <Content Include="AdminCommands\README.txt" />
+    <Content Include="OrderCommands\README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

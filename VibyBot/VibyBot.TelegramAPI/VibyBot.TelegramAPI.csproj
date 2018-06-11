@@ -190,6 +190,10 @@
       <Project>{6a494b83-b43b-4680-8fc9-2f4b0e13a1e6}</Project>
       <Name>VibyBot.Control</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VibyBot.Persistence\VibyBot.Persistence.csproj">
+      <Project>{5199D50E-6B00-4412-AA4E-A6677A17C50B}</Project>
+      <Name>VibyBot.Persistence</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
