@@ -11,7 +11,7 @@ using VibyBot.Persistence.DTO;
 namespace VibyBot.Conrol.AdminCommands
 {
     //ця команда особлива, оскільки вона надає адмін доступ
-    public class AccessCommand : Command
+    public class AccessCommand : AdminCommand
     {
         public override string Name => @"/admin";
 

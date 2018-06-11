@@ -10,7 +10,7 @@ using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Conrol.AdminCommands
 {
-    public class AddPrintCommand : Command
+    public class AddPrintCommand : AdminCommand
     {
         public override string Name => @"/addprint ";
 

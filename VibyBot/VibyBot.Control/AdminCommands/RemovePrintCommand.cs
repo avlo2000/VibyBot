@@ -2,12 +2,13 @@
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using VibyBot.Conrol;
+using VibyBot.Conrol.AdminCommands;
 using VibyBot.Persistence.Contracts;
 using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Control.AdminCommands
 {
-    public class RemovePrintCommand : Command
+    public class RemovePrintCommand : AdminCommand
     {
         public override string Name => @"/rmprint";
 
