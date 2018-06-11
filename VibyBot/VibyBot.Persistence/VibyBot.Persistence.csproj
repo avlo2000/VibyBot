@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IUserInfo.cs" />
+    <Compile Include="Contracts\IManagementStorage.cs" />
+    <Compile Include="Contracts\IOrderStorage.cs" />
+    <Compile Include="Contracts\IUserStorage.cs" />
     <Compile Include="DTO\Additional\ClothesColor.cs" />
     <Compile Include="DTO\Additional\ClothesType.cs" />
     <Compile Include="DTO\Additional\PaymentType.cs" />

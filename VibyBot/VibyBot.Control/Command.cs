@@ -12,7 +12,7 @@ namespace VibyBot.Conrol
 
         public string Answer { get; protected set; }
 
-        public IUserInfo UserInformation;
+        public IUserStorage UserInfo;
 
         public virtual bool Contains(string command)
         {

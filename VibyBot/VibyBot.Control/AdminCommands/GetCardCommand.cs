@@ -5,24 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using VibyBot.Conrol;
 using VibyBot.Persistence.ManagerConfiguration;
 
-namespace VibyBot.Conrol.AdminCommands
+namespace VibyBot.Control.AdminCommands
 {
-    public class SetCreditCardCommand : Command
+    public class GetCardCommand : Command
     {
-        public override string Name => "/setcard";
+        public override string Name => @"/getcard";
 
         public override void Execute(Message message, TelegramBotClient client)
         {
-            var splCommand = message.Text.Split(' ');
             var chatId = message.Chat.Id;
 
-            if (UserInformation.GetAdminAccess(chatId))
-            {
-                ManagerConfig.CardNumber = splCommand[1];
-                Answer = "Встановлено новий номер картки.";
-            }
+            if (UserInfo.GetAdminAccess(chatId))
+                Answer = "Номер картки: " + ManagerConfig.CardNumber;
             else
                 Answer = "Немає дозволу.";
 

@@ -20,7 +20,7 @@ namespace VibyBot.TelegramAPI.Models
         {
             _commandsList = new List<Command>();
             _commandsList.Add(new AccessCommand());
-            _commandsList.Add(new SetCreditCardCommand());
+            _commandsList.Add(new SetCardCommand());
             _commandsList.Add(new AddPrintCommand());
             _commandsList.Add(new ShowPrintsCommand());
         }

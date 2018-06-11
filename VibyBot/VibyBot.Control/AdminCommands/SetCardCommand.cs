@@ -9,9 +9,9 @@ using VibyBot.Persistence.ManagerConfiguration;
 
 namespace VibyBot.Conrol.AdminCommands
 {
-    public class AddPrintCommand : Command
+    public class SetCardCommand : Command
     {
-        public override string Name => @"/addprint ";
+        public override string Name => "/setcard";
 
         public override void Execute(Message message, TelegramBotClient client)
         {
@@ -20,8 +20,8 @@ namespace VibyBot.Conrol.AdminCommands
 
             if (UserInfo.GetAdminAccess(chatId))
             {
-                ManagerConfig.Prints.Add(splCommand[1]);
-                Answer = "Принт додано.";
+                ManagerConfig.CardNumber = splCommand[1];
+                Answer = "Встановлено новий номер картки " + ManagerConfig.CardNumber;
             }
             else
                 Answer = "Немає дозволу.";

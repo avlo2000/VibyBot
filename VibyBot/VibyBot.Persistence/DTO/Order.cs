@@ -1,4 +1,5 @@
-﻿using VibyBot.Persistence.DTO.Additional;
+﻿using System;
+using VibyBot.Persistence.DTO.Additional;
 using VibyBot.Persistence.Exceptions;
 using VibyBot.Persistence.ManagerConfiguration;
 
@@ -6,10 +7,25 @@ namespace VibyBot.Persistence.DTO
 {
     public class Order
     {
-        //поля мають заповнюватися в тому порядку в якому вони написані
-        public int ClientId { get; private set; }
+        public override string ToString()
+        {
+            string stringOrder = "";
+            if (Ready)
+            {
+                stringOrder = "Замовлення у VIBY shop " + Environment.NewLine;
+                stringOrder += "Користувач: " + Name + Environment.NewLine;
+                stringOrder += "Тип одягу: " + ClothesType.Type + Environment.NewLine;
+                stringOrder += "Колір одягу: " + ClothesColor.Color + Environment.NewLine;
+                stringOrder += "Адресса: " + Adress + Environment.NewLine;
+                stringOrder += "Споіб оплати: " + Payment.Type + Environment.NewLine;
+            }
+            return stringOrder;
+        }
 
-        public ClothesType Type { get; set; }
+        //поля мають заповнюватися в тому порядку в якому вони написані
+        public long ClientId { get; private set; }
+
+        public ClothesType ClothesType { get; set; }
 
         private string _print;
         public string Print
@@ -26,24 +42,7 @@ namespace VibyBot.Persistence.DTO
             }
         }
 
-        private ClothesColor _color;
-        public ClothesColor Color
-        {
-            get => _color;
-            set
-            {
-                if (Type == ClothesType.Tshirt)
-                    _color = value;
-                else if (Type == ClothesType.Polo && value == ClothesColor.Yellow)
-                    throw new WrongColorException();
-                else if (Type == ClothesType.Polo && value != ClothesColor.Yellow)
-                    _color = value;
-                else if (Type == ClothesType.Cap && (value == ClothesColor.Yellow || value == ClothesColor.White))
-                    throw new WrongColorException();
-                else if (Type == ClothesType.Cap && value == ClothesColor.Black)
-                    _color = value;
-            }
-        }
+        public ClothesColor ClothesColor { get; set; }
 
         public string Name { get; set; }
 
@@ -56,7 +55,7 @@ namespace VibyBot.Persistence.DTO
 
         public bool Ready { get; set; }
 
-        public Order(int id)
+        public Order(long id)
         {
             CardNumber = ManagerConfig.CardNumber;
             ClientId = id;

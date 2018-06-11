@@ -23,7 +23,7 @@ namespace VibyBot.Conrol.AdminCommands
             object locker = new object();
             if (Contains(message.Text))
                 lock (locker)
-                    UserInformation.SetAdminAccess(chatId);
+                    UserInfo.SetAdminAccess(chatId);
 
             client.SendTextMessageAsync(chatId, Answer);
         }

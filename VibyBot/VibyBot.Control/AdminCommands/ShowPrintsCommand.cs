@@ -1,4 +1,5 @@
-﻿using Telegram.Bot;
+﻿using System;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 using VibyBot.Persistence.ManagerConfiguration;
 
@@ -10,13 +11,13 @@ namespace VibyBot.Conrol.AdminCommands
 
         public override void Execute(Message message, TelegramBotClient client)
         {
-            Answer = "Дотупні принти:\n";
+            Answer = "Дотупні принти:" + Environment.NewLine;
             var chatId = message.Chat.Id;
 
             foreach (var print in ManagerConfig.Prints)
             {
                 Answer += print;
-                Answer += "\n";
+                Answer += Environment.NewLine;
             }
 
             client.SendTextMessageAsync(chatId, Answer);
