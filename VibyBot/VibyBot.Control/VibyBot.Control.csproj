@@ -48,8 +48,8 @@
   <ItemGroup>
     <Compile Include="AdminCommands\AccessCommand.cs" />
     <Compile Include="AdminCommands\AddPrintCommand.cs" />
+    <Compile Include="AdminCommands\AdminCommand.cs" />
     <Compile Include="AdminCommands\RemovePrintCommand.cs" />
-    <Compile Include="Command.cs" />
     <Compile Include="AdminCommands\ShowPrintsCommand.cs" />
     <Compile Include="OrderSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

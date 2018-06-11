@@ -13,16 +13,16 @@ namespace VibyBot.TelegramAPI.Models
     public static class Bot
     {
         private static TelegramBotClient _client;
-        private static List<Command> _commandsList;
+        private static List<AdminCommand> _adminCommandsList;
 
-        public static IReadOnlyList<Command> Commands { get => _commandsList.AsReadOnly(); }
+        public static IReadOnlyList<AdminCommand> AdminCommands { get => _adminCommandsList.AsReadOnly(); }
 
         public static void RegistateCommands(IManagementStorage managementStorage)
         {
-            _commandsList = new List<Command>();
-            _commandsList.Add(new AccessCommand(managementStorage));
-            _commandsList.Add(new AddPrintCommand(managementStorage));
-            _commandsList.Add(new ShowPrintsCommand(managementStorage));
+            _adminCommandsList = new List<AdminCommand>();
+            _adminCommandsList.Add(new AccessCommand(managementStorage));
+            _adminCommandsList.Add(new AddPrintCommand(managementStorage));
+            _adminCommandsList.Add(new ShowPrintsCommand(managementStorage));
         }
 
         public static async Task<TelegramBotClient>GetAsync(IManagementStorage managementStorage)
