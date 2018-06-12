@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IManagementStorage.cs" />
     <Compile Include="Contracts\IOrderStorage.cs" />
-    <Compile Include="Contracts\IUserStorage.cs" />
+    <Compile Include="Contracts\IAdminStorage.cs" />
     <Compile Include="DTO\ManagerInfo.cs" />
     <Compile Include="DTO\Additional\ClothesColor.cs" />
     <Compile Include="DTO\Additional\ClothesType.cs" />
