@@ -11,11 +11,23 @@ namespace VibyBot.Control.AdminCommands
 {
     public class CloseOrderCommand : AdminCommand
     {
-        public override string Name => throw new NotImplementedException();
+        public override string Name => @"/close ";
 
-        public override Task ExecuteAsync(Message message, TelegramBotClient client)
+        public async override Task ExecuteAsync(Message message, TelegramBotClient client)
         {
-            throw new NotImplementedException();
+            var splCommand = message.Text.Split(' ');
+            var chatId = message.Chat.Id;
+            var orderId = int.Parse(splCommand[1]);
+
+            if (_adminStorage.GetAdminAccess(chatId))
+            {
+                _orderStorage.CloseOrder(orderId);
+                Answer = "Замовлення закрито.";
+            }
+            else
+                Answer = "Немає дозволу.";
+
+            await client.SendTextMessageAsync(chatId, Answer);
         }
 
         public CloseOrderCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
