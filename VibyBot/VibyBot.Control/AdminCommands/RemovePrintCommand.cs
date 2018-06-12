@@ -5,9 +5,9 @@ using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.Control.AdminCommands
 {
-    public class AddPrintCommand : AdminCommand
+    public class RemovePrintCommand : AdminCommand
     {
-        public override string Name => @"/addprint ";
+        public override string Name => @"/rmprint";
 
         public async override Task ExecuteAsync(Message message, TelegramBotClient client)
         {
@@ -16,8 +16,8 @@ namespace VibyBot.Control.AdminCommands
 
             if (_adminStorage.GetAdminAccess(chatId))
             {
-                _managerInfo.Prints.Add(splCommand[1]);
-                Answer = "Принт додано.";
+                _managerInfo.Prints.Remove(splCommand[1]);
+                Answer = "Принт видалено.";
             }
             else
                 Answer = "Немає дозволу.";
@@ -26,7 +26,7 @@ namespace VibyBot.Control.AdminCommands
             await client.SendTextMessageAsync(chatId, Answer);
         }
 
-        public AddPrintCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+        public RemovePrintCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
             : base(managementStorage, userStorage, orderStorage)
         {
         }

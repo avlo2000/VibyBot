@@ -1,13 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VibyBot.Persistence.DTO.Additional
 {
-    public enum ClothesType
+    public class ClothesType : IEquatable<ClothesType>
     {
-        Tshirt, Cap, Polo
+        public string Type;
+
+        public static ClothesType Tshirt { get => new ClothesType() { Type = _Tshirt}; }
+        public static ClothesType Cap {get => new ClothesType() { Type = _Cap}; }
+        public static ClothesType Polo { get => new ClothesType() { Type = _Polo }; }
+
+        private const string _Tshirt = "футболка";
+        private const string _Cap = "кепка";
+        private const string _Polo = "поло";
+
+        public ClothesType(){ }
+
+        public bool Equals(ClothesType other)
+        {
+            return other.Type.Equals(Type);
+        }
     }
 }

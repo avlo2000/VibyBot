@@ -1,25 +1,32 @@
-﻿using Telegram.Bot;
+﻿using System;
+using System.Threading.Tasks;
+using Telegram.Bot;
 using Telegram.Bot.Types;
-using VibyBot.Persistence.ManagerConfiguration;
+using VibyBot.Persistence.Contracts;
 
-namespace VibyBot.Conrol.AdminCommands
+namespace VibyBot.Control.AdminCommands
 {
-    public class ShowPrintsCommand : Command
+    public class ShowPrintsCommand : AdminCommand
     {
         public override string Name => @"/showprints";
 
-        public override void Execute(Message message, TelegramBotClient client)
+        public async override Task ExecuteAsync(Message message, TelegramBotClient client)
         {
-            Answer = "Дотупні принти:\n";
+            Answer = "Дотупні принти:" + Environment.NewLine;
             var chatId = message.Chat.Id;
 
-            foreach (var print in ManagerConfig.Prints)
+            foreach (var print in _managerInfo.Prints)
             {
                 Answer += print;
-                Answer += "\n";
+                Answer += Environment.NewLine;
             }
 
-            client.SendTextMessageAsync(chatId, Answer);
+            await client.SendTextMessageAsync(chatId, Answer);
+        }
+
+        public ShowPrintsCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+            : base(managementStorage, userStorage, orderStorage)
+        {
         }
     }
 }
