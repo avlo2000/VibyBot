@@ -6,11 +6,13 @@ namespace VibyBot.Persistence.DTO
     public class Order
     { 
         //поля мають заповнюватися в тому порядку в якому вони написані
+        public long OrderId { get; set; }
+
         public long ClientId { get; private set; }
 
         public ClothesType ClothesType { get; set; }
 
-        public string Print;
+        public string Print { get; set; }
 
         public ClothesColor ClothesColor { get; set; }
 

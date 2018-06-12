@@ -5,11 +5,11 @@ namespace VibyBot.Persistence.Contracts
 {
     public interface IOrderStorage
     {
-        void UpdateOrder(long userId, Order oreder);
+        void UpdateOrder(Order order);
 
-        void CloseOrder(long userId);
+        void CloseOrder(long orderId);
 
-        Order CurrentOrder(long userId);
+        IEnumerable<Order> CurrentOrders(long userId);
 
         IEnumerable<Order> GetAll();
     }

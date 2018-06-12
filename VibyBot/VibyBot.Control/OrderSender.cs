@@ -9,7 +9,7 @@ namespace VibyBot.Control
     public class OrderSender
     {
         private IOrderStorage _orderStorage;
-        private IUserStorage _userStorage;
+        private IAdminStorage _userStorage;
 
         private string OrderToStr(Order order)
         {
@@ -35,7 +35,7 @@ namespace VibyBot.Control
                         await client.SendTextMessageAsync(id, OrderToStr(order));
         }
 
-        public OrderSender(IOrderStorage orderStorage, IUserStorage userStorage)
+        public OrderSender(IOrderStorage orderStorage, IAdminStorage userStorage)
         {
             _orderStorage = orderStorage;
             _userStorage = userStorage;
