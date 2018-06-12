@@ -1,10 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
-using VibyBot.Conrol;
-using VibyBot.Conrol.AdminCommands;
 using VibyBot.Persistence.Contracts;
-using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Control.AdminCommands
 {
@@ -12,12 +9,12 @@ namespace VibyBot.Control.AdminCommands
     {
         public override string Name => @"/rmprint";
 
-        public async override Task Execute(Message message, TelegramBotClient client)
+        public async override Task ExecuteAsync(Message message, TelegramBotClient client)
         {
             var splCommand = message.Text.Split(' ');
             var chatId = message.Chat.Id;
 
-            if (UserInfo.GetAdminAccess(chatId))
+            if (_adminStorage.GetAdminAccess(chatId))
             {
                 _managerInfo.Prints.Remove(splCommand[1]);
                 Answer = "Принт видалено.";
@@ -29,7 +26,8 @@ namespace VibyBot.Control.AdminCommands
             await client.SendTextMessageAsync(chatId, Answer);
         }
 
-        public RemovePrintCommand(IManagementStorage managementStorage) : base(managementStorage)
+        public RemovePrintCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+            : base(managementStorage, userStorage, orderStorage)
         {
         }
     }

@@ -4,8 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Telegram.Bot;
-using VibyBot.Conrol;
-using VibyBot.Conrol.AdminCommands;
+using VibyBot.Control.AdminCommands;
 using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.TelegramAPI.Models
@@ -17,33 +16,21 @@ namespace VibyBot.TelegramAPI.Models
 
         public static IReadOnlyList<AdminCommand> AdminCommands { get => _adminCommandsList.AsReadOnly(); }
 
-        public static void RegistateCommands(IManagementStorage managementStorage)
+        public static void RegistateCommands(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)
         {
             _adminCommandsList = new List<AdminCommand>();
-            _adminCommandsList.Add(new AccessCommand(managementStorage));
-            _adminCommandsList.Add(new AddPrintCommand(managementStorage));
-            _adminCommandsList.Add(new ShowPrintsCommand(managementStorage));
+            _adminCommandsList.Add(new AccessCommand(managementStorage, adminStorage, orderStorage));
+            _adminCommandsList.Add(new AddPrintCommand(managementStorage, adminStorage, orderStorage));
+            _adminCommandsList.Add(new ShowPrintsCommand(managementStorage, adminStorage, orderStorage));
+            _adminCommandsList.Add(new RemovePrintCommand(managementStorage, adminStorage, orderStorage));
         }
 
-        public static async Task<TelegramBotClient>GetAsync(IManagementStorage managementStorage)
+        public static async Task<TelegramBotClient> GetAsync(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)
         {
             if (_client != null)
                 return _client;
 
-            RegistateCommands(managementStorage);
-
-            _client = new TelegramBotClient(AppSettings.Key);
-
-            var webHook = string.Concat(AppSettings.Url, "api/message/update");
-            await _client.SetWebhookAsync(webHook);
-
-            return _client;
-        }
-
-        public static async Task<TelegramBotClient> GetAsync()
-        {
-            if (_client != null)
-                return _client;
+            RegistateCommands(managementStorage, adminStorage, orderStorage);
 
             _client = new TelegramBotClient(AppSettings.Key);
 

@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using VibyBot.Persistence.Contracts;
-using VibyBot.Persistence.DTO;
 
-namespace VibyBot.Conrol.AdminCommands
+namespace VibyBot.Control.AdminCommands
 {
     public class AddPrintCommand : AdminCommand
     {
         public override string Name => @"/addprint ";
 
-        public async override Task Execute(Message message, TelegramBotClient client)
+        public async override Task ExecuteAsync(Message message, TelegramBotClient client)
         {
             var splCommand = message.Text.Split(' ');
             var chatId = message.Chat.Id;
 
-            if (UserInfo.GetAdminAccess(chatId))
+            if (_adminStorage.GetAdminAccess(chatId))
             {
                 _managerInfo.Prints.Add(splCommand[1]);
                 Answer = "Принт додано.";
@@ -31,7 +26,8 @@ namespace VibyBot.Conrol.AdminCommands
             await client.SendTextMessageAsync(chatId, Answer);
         }
 
-        public AddPrintCommand(IManagementStorage managementStorage) : base(managementStorage)
+        public AddPrintCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+            : base(managementStorage, userStorage, orderStorage)
         {
         }
     }
