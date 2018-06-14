@@ -3,7 +3,7 @@ using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Control.AdminCommands
 {
-    abstract public class AdminCommand : StorageControl, ICommand
+    abstract public class AdminCommand : ICommand
     {
         public abstract string Name { get; }
 
