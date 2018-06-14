@@ -1,31 +1,17 @@
-﻿using System.Threading.Tasks;
-using Telegram.Bot;
-using Telegram.Bot.Types;
-using VibyBot.Persistence.Contracts;
-using VibyBot.Persistence.DTO;
+﻿using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.Control.AdminCommands
 {
-    abstract public class AdminCommand
+    abstract public class AdminCommand : StorageControl
     {
         public abstract string Name { get; }
 
-        abstract public Task ExecuteAsync(Message message, TelegramBotClient client);
-
-        public string Answer { get; protected set; }
-
-        
+        abstract public string Execute(string message, long chatId);
 
         public virtual bool Contains(string command)
         {
             return command.Contains(Name);
         }
-
-        protected ManagerInfo _managerInfo;
-
-        protected IManagementStorage _managementStorage;
-        protected IAdminStorage _adminStorage;
-        protected IOrderStorage _orderStorage;
 
         public AdminCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
         {

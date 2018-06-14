@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Telegram.Bot;
-using Telegram.Bot.Types;
-using VibyBot.Persistence.Contracts;
+﻿using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.Control.AdminCommands
 {
@@ -13,21 +6,20 @@ namespace VibyBot.Control.AdminCommands
     {
         public override string Name => @"/close ";
 
-        public async override Task ExecuteAsync(Message message, TelegramBotClient client)
+        public override string Execute(string message, long chatId)
         {
-            var splCommand = message.Text.Split(' ');
-            var chatId = message.Chat.Id;
+            var splCommand = message.Split(' ');
             var orderId = int.Parse(splCommand[1]);
-
+            string answer;
             if (_adminStorage.GetAdminAccess(chatId))
             {
                 _orderStorage.CloseOrder(orderId);
-                Answer = "Замовлення закрито.";
+                answer = "Замовлення закрито.";
             }
             else
-                Answer = "Немає дозволу.";
+                answer = "Немає дозволу.";
 
-            await client.SendTextMessageAsync(chatId, Answer);
+            return answer;
         }
 
         public CloseOrderCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)

@@ -48,8 +48,6 @@
     <Compile Include="DTO\Additional\ClothesType.cs" />
     <Compile Include="DTO\Additional\PaymentType.cs" />
     <Compile Include="DTO\Order.cs" />
-    <Compile Include="Exceptions\NotExistingPrintException.cs" />
-    <Compile Include="Exceptions\WrongColorException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
