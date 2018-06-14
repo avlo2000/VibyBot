@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VibyBot.Persistence.DTO.Additional
 {
@@ -19,6 +20,11 @@ namespace VibyBot.Persistence.DTO.Additional
         public bool Equals(ClothesColor other)
         {
             return other.Color.Equals(Color);
+        }
+
+        public override int GetHashCode()
+        {
+            return -1200350280 + EqualityComparer<string>.Default.GetHashCode(Color);
         }
     }
 }
