@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using Telegram.Bot;
+using VibyBot.Control;
 using VibyBot.Control.AdminCommands;
 using VibyBot.Persistence.Contracts;
 
@@ -12,13 +13,13 @@ namespace VibyBot.TelegramAPI.Models
     public static class Bot
     {
         private static TelegramBotClient _client;
-        private static List<AdminCommand> _adminCommandsList;
+        private static List<ICommand> _adminCommandsList;
 
-        public static IReadOnlyList<AdminCommand> AdminCommands { get => _adminCommandsList.AsReadOnly(); }
+        public static IReadOnlyList<ICommand> AdminCommands { get => _adminCommandsList.AsReadOnly(); }
 
         public static void RegistateCommands(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)
         {
-            _adminCommandsList = new List<AdminCommand>();
+            _adminCommandsList = new List<ICommand>();
             _adminCommandsList.Add(new AccessCommand(managementStorage, adminStorage, orderStorage));
             _adminCommandsList.Add(new AddPrintCommand(managementStorage, adminStorage, orderStorage));
             _adminCommandsList.Add(new ShowPrintsCommand(managementStorage, adminStorage, orderStorage));

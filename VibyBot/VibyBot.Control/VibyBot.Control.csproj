@@ -49,7 +49,7 @@
     <Compile Include="AdminCommands\CloseOrderCommand.cs" />
     <Compile Include="AdminCommands\RemovePrintCommand.cs" />
     <Compile Include="AdminCommands\ShowPrintsCommand.cs" />
-    <Compile Include="StorageControl.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
