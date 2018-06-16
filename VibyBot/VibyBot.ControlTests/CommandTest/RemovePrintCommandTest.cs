@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VibyBot.Control.AdminCommands;
 using VibyBot.ControlTests.Mockups;
@@ -10,15 +9,15 @@ namespace VibyBot.ControlTests.CommandTest
     [TestClass]
     public class RemovePrintCommandTest
     {
-        public IManagementStorageImplementation msi;
-        public IAdminStorageImplementation asi;
-        public IOrderStorageImplementation osi;
+        public ManagementStorageMock msi;
+        public AdminStorageMock asi;
+        public OrderStorageMock osi;
 
         public RemovePrintCommand AccessCommand;
 
         public RemovePrintCommandTest()
         {
-            msi = new IManagementStorageImplementation();
+            msi = new ManagementStorageMock();
 
             ManagerInfo mi = new ManagerInfo
             {
@@ -27,11 +26,11 @@ namespace VibyBot.ControlTests.CommandTest
             };
             msi.UpdateConfig(mi);
 
-            asi = new IAdminStorageImplementation();
+            asi = new AdminStorageMock();
 
             asi.SetAdminAccess(777);
 
-            osi = new IOrderStorageImplementation();
+            osi = new OrderStorageMock();
             AccessCommand = new RemovePrintCommand(msi, asi, osi);
         }
 

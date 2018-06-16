@@ -8,11 +8,11 @@ using VibyBot.Persistence.DTO;
 
 namespace VibyBot.ControlTests.Mockups
 {
-    public class IManagementStorageImplementation : IManagementStorage
+    public class ManagementStorageMock : IManagementStorage
     {
         private ManagerInfo _config;
 
-        public IManagementStorageImplementation()
+        public ManagementStorageMock()
         {
             _config = new ManagerInfo();
         }

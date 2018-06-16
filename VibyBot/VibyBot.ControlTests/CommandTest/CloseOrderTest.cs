@@ -7,15 +7,15 @@ using VibyBot.Persistence.DTO;
 namespace VibyBot.ControlTests.CommandTest
 {
     [TestClass]
-    public class AccessCommandTest
+    public class CloseOrderTest
     {
         public ManagementStorageMock msi;
         public AdminStorageMock asi;
         public OrderStorageMock osi;
 
-        public AccessCommand AccessCommand;
+        public CloseOrderCommand AccessCommand;
 
-        public AccessCommandTest()
+        public CloseOrderTest()
         {
             msi = new ManagementStorageMock();
 
@@ -26,24 +26,25 @@ namespace VibyBot.ControlTests.CommandTest
             msi.UpdateConfig(mi);
 
             asi = new AdminStorageMock();
+
+            asi.SetAdminAccess(777);
+
             osi = new OrderStorageMock();
-            AccessCommand= new AccessCommand(msi, asi, osi);
+            AccessCommand = new CloseOrderCommand(msi, asi, osi);
         }
 
         [TestMethod]
-        public void ContainTest()
+        public void ExecuteTestTrue()
         {
-            string s = @"/admin 123";
-            Assert.AreEqual(true, AccessCommand.Contains(s));
-        }
+            osi.UpdateOrder(new Order(1) { OrderId = 1});
+            osi.UpdateOrder(new Order(2) { OrderId = 2 });
+            osi.UpdateOrder(new Order(3) { OrderId = 3 });
+            osi.UpdateOrder(new Order(4) { OrderId = 4 });
+            osi.UpdateOrder(new Order(4) { OrderId = 5 });
 
-        [TestMethod]
-        public void ExecuteTest()
-        {
-            string answer = "Доступ  дозволено.";
-            string message = @"/admin 123";
-            long chatId = 777;
-            Assert.AreEqual(answer, AccessCommand.Execute(message, chatId));
+            var answer = "Замовлення закрито.";
+
+            Assert.AreEqual(answer, AccessCommand.Execute(@"/close 2", 777));
         }
     }
 }

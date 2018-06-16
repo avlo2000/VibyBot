@@ -8,11 +8,11 @@ using VibyBot.Persistence.DTO;
 
 namespace VibyBot.ControlTests.Mockups
 {
-    public class IOrderStorageImplementation : IOrderStorage
+    public class OrderStorageMock : IOrderStorage
     {
         private List<Order> _allOrders;
 
-        public IOrderStorageImplementation()
+        public OrderStorageMock()
         {
             _allOrders = new List<Order>();
         }

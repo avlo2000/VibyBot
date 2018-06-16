@@ -7,11 +7,11 @@ using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.ControlTests.Mockups
 {
-   public class IAdminStorageImplementation : IAdminStorage
+   public class AdminStorageMock : IAdminStorage
     {
         private List<long> _admins;
 
-        public IAdminStorageImplementation()
+        public AdminStorageMock()
         {
             _admins = new List<long>();
         }
