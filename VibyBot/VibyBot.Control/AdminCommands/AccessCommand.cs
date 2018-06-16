@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using Telegram.Bot;
-using Telegram.Bot.Types;
-using VibyBot.Persistence.Contracts;
+﻿using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.Control.AdminCommands
 {
@@ -10,18 +7,17 @@ namespace VibyBot.Control.AdminCommands
     {
         public override string Name => @"/admin";
 
-        public async override Task ExecuteAsync(Message message, TelegramBotClient client)
+        public override string Execute(string message, long chatId)
         {
-            var chatId = message.Chat.Id;
-            Answer = "Access allowed";
+            string answer = "Access allowed";
 
             //тут у випадку якщо юзеру надано доступ його записують в бд як адміна
             object locker = new object();
-            if (Contains(message.Text))
+            if (Contains(message))
                 lock (locker)
                     _adminStorage.SetAdminAccess(chatId);
 
-            await client.SendTextMessageAsync(chatId, Answer);
+            return answer;
         }
 
         public override bool Contains(string command)

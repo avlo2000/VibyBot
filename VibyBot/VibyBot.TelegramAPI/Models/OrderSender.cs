@@ -4,7 +4,7 @@ using Telegram.Bot;
 using VibyBot.Persistence.Contracts;
 using VibyBot.Persistence.DTO;
 
-namespace VibyBot.Control
+namespace VibyBot.TelegramAPI.Models
 {
     public class OrderSender
     {
@@ -25,14 +25,19 @@ namespace VibyBot.Control
             return stringOrder;
         }
 
-        public async Task SendAsync(TelegramBotClient client)
+        public async Task SendOrderAsync(TelegramBotClient client, long chatId, Order order)
+        {
+            await client.SendTextMessageAsync(chatId, OrderToStr(order));
+        }
+
+        public async Task SendToAllAsync(TelegramBotClient client)
         {
             var managerIds = _userStorage.GetAllAdmins();
             var orders = _orderStorage.GetAll();
             foreach (var id in managerIds)
                 foreach (var order in orders)
                     if (order.Ready)
-                        await client.SendTextMessageAsync(id, OrderToStr(order));
+                        await SendOrderAsync(client, id, order);
         }
 
         public OrderSender(IOrderStorage orderStorage, IAdminStorage userStorage)

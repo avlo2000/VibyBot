@@ -1,5 +1,4 @@
-﻿using System;
-using VibyBot.Persistence.DTO.Additional;
+﻿using VibyBot.Persistence.DTO.Additional;
 
 namespace VibyBot.Persistence.DTO
 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VibyBot.Persistence.DTO.Additional
 {
@@ -19,6 +20,11 @@ namespace VibyBot.Persistence.DTO.Additional
         public bool Equals(ClothesType other)
         {
             return other.Type.Equals(Type);
+        }
+
+        public override int GetHashCode()
+        {
+            return 2049151605 + EqualityComparer<string>.Default.GetHashCode(Type);
         }
     }
 }

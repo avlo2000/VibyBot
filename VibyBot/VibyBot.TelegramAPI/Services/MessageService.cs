@@ -16,7 +16,8 @@ namespace TelegramInteractionPOC.Services
             foreach (var command in adminCommands)
                 if (command.Contains(message.Text))
                 {
-                    await command.ExecuteAsync(message, client);
+                    string answer = command.Execute(message.Text, message.Chat.Id);
+                    await client.SendTextMessageAsync(message.Chat, answer);
                     break;
                 }
         }

@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using Telegram.Bot;
-using Telegram.Bot.Types;
-using VibyBot.Persistence.Contracts;
+﻿using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.Control.AdminCommands
 {
@@ -9,21 +6,21 @@ namespace VibyBot.Control.AdminCommands
     {
         public override string Name => @"/addprint ";
 
-        public async override Task ExecuteAsync(Message message, TelegramBotClient client)
+        public override string Execute(string message, long chatId)
         {
-            var splCommand = message.Text.Split(' ');
-            var chatId = message.Chat.Id;
+            var splCommand = message.Split(' ');
+            string answer;
 
             if (_adminStorage.GetAdminAccess(chatId))
             {
                 _managerInfo.Prints.Add(splCommand[1]);
-                Answer = "Принт додано.";
+                answer = "Принт додано.";
             }
             else
-                Answer = "Немає дозволу.";
+                answer = "Немає дозволу.";
 
             _managementStorage.UpdateConfig(_managerInfo);
-            await client.SendTextMessageAsync(chatId, Answer);
+            return answer;
         }
 
         public AddPrintCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
