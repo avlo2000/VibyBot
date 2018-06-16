@@ -9,7 +9,7 @@ namespace VibyBot.Control.AdminCommands
 
         public override string Execute(string message, long chatId)
         {
-            string answer = "Access allowed";
+            string answer = "Доступ  дозволено.";
 
             //тут у випадку якщо юзеру надано доступ його записують в бд як адміна
             object locker = new object();

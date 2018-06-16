@@ -56,11 +56,15 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="CommandTest\AccessCommandTest.cs" />
+    <Compile Include="CommandTest\AddPrintCommandTest.cs" />
+    <Compile Include="CommandTest\RemovePrintCommandTest.cs" />
+    <Compile Include="CommandTest\ShowPrintsCommandTest.cs" />
     <Compile Include="Mockups\IAdminStorageImplementation.cs" />
     <Compile Include="Mockups\IManagementStorageImplementation.cs" />
     <Compile Include="Mockups\IOrderStorageImplementation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AdminStorageTest.cs" />
+    <Compile Include="Mockups\AdminStorageTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

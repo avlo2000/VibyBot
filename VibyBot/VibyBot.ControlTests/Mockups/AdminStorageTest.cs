@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VibyBot.ControlTests.Mockups;
 
-namespace VibyBot.ControlTests
+namespace VibyBot.ControlTests.Mockups
 {
     [TestClass]
     public class AdminStorageTest

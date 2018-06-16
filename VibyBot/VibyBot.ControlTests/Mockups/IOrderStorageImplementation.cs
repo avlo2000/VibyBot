@@ -8,7 +8,7 @@ using VibyBot.Persistence.DTO;
 
 namespace VibyBot.ControlTests.Mockups
 {
-    class IOrderStorageImplementation : IOrderStorage
+    public class IOrderStorageImplementation : IOrderStorage
     {
         private List<Order> _allOrders;
 
@@ -48,7 +48,17 @@ namespace VibyBot.ControlTests.Mockups
 
         public void UpdateOrder(Order order)
         {
-            _allOrders.Add(order);
+            for (int i = 0; i < _allOrders.Count; i++)
+            {
+                if (_allOrders[i].OrderId == order.OrderId)
+                {
+                    _allOrders[i] = order;
+                }
+                else
+                {
+                    _allOrders.Add(order);
+                }
+            }
         }
     }
 }
