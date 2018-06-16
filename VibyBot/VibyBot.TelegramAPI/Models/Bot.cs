@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web;
 using Telegram.Bot;
 using VibyBot.Control;
 using VibyBot.Control.AdminCommands;
@@ -19,18 +16,24 @@ namespace VibyBot.TelegramAPI.Models
 
         public static void RegistateCommands(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)
         {
-            _adminCommandsList = new List<ICommand>();
-            _adminCommandsList.Add(new AccessCommand(managementStorage, adminStorage, orderStorage));
-            _adminCommandsList.Add(new AddPrintCommand(managementStorage, adminStorage, orderStorage));
-            _adminCommandsList.Add(new ShowPrintsCommand(managementStorage, adminStorage, orderStorage));
-            _adminCommandsList.Add(new RemovePrintCommand(managementStorage, adminStorage, orderStorage));
-            _adminCommandsList.Add(new CloseOrderCommand(managementStorage, adminStorage, orderStorage));
+            object locker = new object();
+
+            lock (locker)
+            {
+                _adminCommandsList = new List<ICommand>();
+                _adminCommandsList.Add(new AccessCommand(managementStorage, adminStorage, orderStorage));
+                _adminCommandsList.Add(new AddPrintCommand(managementStorage, adminStorage, orderStorage));
+                _adminCommandsList.Add(new ShowPrintsCommand(managementStorage, adminStorage, orderStorage));
+                _adminCommandsList.Add(new RemovePrintCommand(managementStorage, adminStorage, orderStorage));
+                _adminCommandsList.Add(new CloseOrderCommand(managementStorage, adminStorage, orderStorage));
+            }
         }
 
         public static async Task<TelegramBotClient> GetAsync(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)
         {
             if (_client != null)
                 return _client;
+
 
             RegistateCommands(managementStorage, adminStorage, orderStorage);
 
