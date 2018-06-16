@@ -60,6 +60,7 @@
     <Compile Include="Mockups\IManagementStorageImplementation.cs" />
     <Compile Include="Mockups\IOrderStorageImplementation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AdminStorageTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

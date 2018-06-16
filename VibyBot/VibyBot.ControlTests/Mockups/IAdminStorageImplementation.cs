@@ -7,9 +7,14 @@ using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.ControlTests.Mockups
 {
-    class IAdminStorageImplementation : IAdminStorage
+   public class IAdminStorageImplementation : IAdminStorage
     {
         private List<long> _admins;
+
+        public IAdminStorageImplementation()
+        {
+            _admins = new List<long>();
+        }
 
         public bool GetAdminAccess(long userId)
         {

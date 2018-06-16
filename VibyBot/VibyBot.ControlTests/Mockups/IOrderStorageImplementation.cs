@@ -11,7 +11,11 @@ namespace VibyBot.ControlTests.Mockups
     class IOrderStorageImplementation : IOrderStorage
     {
         private List<Order> _allOrders;
-        private List<Order> _clientOrders;
+
+        public IOrderStorageImplementation()
+        {
+            _allOrders = new List<Order>();
+        }
 
         public void CloseOrder(long orderId)
         {
@@ -26,7 +30,7 @@ namespace VibyBot.ControlTests.Mockups
 
         public IEnumerable<Order> CurrentOrders(long userId)
         {
-            
+            List<Order> _clientOrders = new List<Order>();
             foreach (var order in _allOrders)
             {
                 if (order.ClientId == userId)

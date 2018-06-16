@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace VibyBot.Persistence.DTO
 {
@@ -6,6 +7,7 @@ namespace VibyBot.Persistence.DTO
     {
         public HashSet<string> Prints { set; get; }
 
-        public string Password { get; set; } 
+        public string Password { get; set; }
+
     }
 }

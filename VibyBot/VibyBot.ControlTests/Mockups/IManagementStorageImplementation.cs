@@ -11,6 +11,12 @@ namespace VibyBot.ControlTests.Mockups
     class IManagementStorageImplementation : IManagementStorage
     {
         private ManagerInfo _config;
+
+        public IManagementStorageImplementation()
+        {
+            _config = new ManagerInfo();
+        }
+
         public ManagerInfo GetConfig()
         {
             return _config;
