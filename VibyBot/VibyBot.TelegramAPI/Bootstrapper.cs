@@ -2,6 +2,7 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using TelegramInteractionPOC.Services;
 using Unity.Mvc3;
+using VibyBot.ControlTests.Mockups;
 using VibyBot.Persistence.Contracts;
 
 namespace TelegramInteractionPOC
@@ -20,9 +21,9 @@ namespace TelegramInteractionPOC
             var container = new UnityContainer();
 
             container.RegisterType<IMessageService, MessageService>();
-            //  container.RegisterType<IManagementStorage, TO DO>();
-            //  container.RegisterType<IOrderStorage, TO DO>();
-            //  container.RegisterType<IAdminStorage, TO DO>();
+            container.RegisterType<IManagementStorage, ManagementStorageMock>();
+            container.RegisterType<IOrderStorage, OrderStorageMock>();
+            container.RegisterType<IAdminStorage, AdminStorageMock>();
 
             return container;
         }
