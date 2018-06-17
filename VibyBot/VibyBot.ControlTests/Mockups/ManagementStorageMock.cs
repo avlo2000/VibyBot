@@ -10,11 +10,12 @@ namespace VibyBot.ControlTests.Mockups
 {
     public class ManagementStorageMock : IManagementStorage
     {
-        private ManagerInfo _config;
+        private static ManagerInfo _config;
 
         public ManagementStorageMock()
         {
-            _config = new ManagerInfo();
+            if (_config == null)
+                _config = new ManagerInfo();
         }
 
         public ManagerInfo GetConfig()

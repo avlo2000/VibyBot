@@ -7,7 +7,7 @@ namespace VibyBot.TelegramAPI.Models
 {
     public static class AppSettings
     {
-        public static string Url { get; set; } = "http://vibybottelegramapi20180608092943.azurewebsites.net/";
+        public static string Url { get; set; } = "https://vibybot.azurewebsites.net/";
 
         public static string Name { get; set; } = "BuyWithMeBot";
 

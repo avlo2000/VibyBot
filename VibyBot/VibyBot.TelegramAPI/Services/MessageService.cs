@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 using Telegram.Bot.Types;
 using VibyBot.Persistence.Contracts;
 using VibyBot.TelegramAPI.Models;
@@ -8,9 +9,9 @@ namespace TelegramInteractionPOC.Services
 {
     public class MessageService : IMessageService
     {
-        public async Task Execute([FromBody]Update update, IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)
+        public async Task Execute([FromBody]Update update)
         {
-            var client = await Bot.GetAsync(managementStorage, adminStorage, orderStorage);
+            var client = Bot.Get();
             var adminCommands = Bot.AdminCommands;
             var message = update.Message;
             foreach (var command in adminCommands)

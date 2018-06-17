@@ -4,6 +4,7 @@ using TelegramInteractionPOC.Services;
 using Unity.Mvc3;
 using VibyBot.ControlTests.Mockups;
 using VibyBot.Persistence.Contracts;
+using VibyBot.TelegramAPI.Controllers;
 
 namespace TelegramInteractionPOC
 {

@@ -13,7 +13,10 @@ namespace VibyBot.Control.AdminCommands
 
             if (_adminStorage.GetAdminAccess(chatId))
             {
-                _managerInfo.Prints.Add(splCommand[1]);
+                var print = "";
+                for (int i = 1; i < splCommand.Length; i++)
+                    print += splCommand[i] + " ";
+                _managerInfo.Prints.Add(print);
                 answer = "Принт додано.";
             }
             else

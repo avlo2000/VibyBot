@@ -7,6 +7,6 @@ namespace TelegramInteractionPOC.Services
 {
     public interface IMessageService
     {
-        Task Execute([FromBody]Update update, IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage);
+        Task Execute([FromBody]Update update);
     }
 }

@@ -9,11 +9,12 @@ namespace VibyBot.ControlTests.Mockups
 {
    public class AdminStorageMock : IAdminStorage
     {
-        private List<long> _admins;
+        private static List<long> _admins;
 
         public AdminStorageMock()
         {
-            _admins = new List<long>();
+            if(_admins == null)
+                _admins = new List<long>();
         }
 
         public bool GetAdminAccess(long userId)

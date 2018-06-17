@@ -10,11 +10,12 @@ namespace VibyBot.ControlTests.Mockups
 {
     public class OrderStorageMock : IOrderStorage
     {
-        private List<Order> _allOrders;
+        private static List<Order> _allOrders;
 
         public OrderStorageMock()
         {
-            _allOrders = new List<Order>();
+            if (_allOrders == null)
+                _allOrders = new List<Order>();
         }
 
         public void CloseOrder(long orderId)
