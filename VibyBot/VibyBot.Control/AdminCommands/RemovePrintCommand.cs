@@ -13,8 +13,13 @@ namespace VibyBot.Control.AdminCommands
 
             if (_adminStorage.GetAdminAccess(chatId))
             {
-                _managerInfo.Prints.Remove(splCommand[1]);
-                answer = "Принт видалено.";
+                var print = "";
+                for (int i = 1; i < splCommand.Length; i++)
+                    print += splCommand[i] + " ";
+                if (_managerInfo.Prints.Remove(print))
+                    answer = "Принт видалено.";
+                else
+                    answer = "Принт не знайдено.";
             }
             else
                 answer = "Немає дозволу.";

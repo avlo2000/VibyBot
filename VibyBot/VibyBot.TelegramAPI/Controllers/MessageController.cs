@@ -10,22 +10,16 @@ namespace VibyBot.TelegramAPI.Controllers
     public class MessageController : ApiController
     {
         private IMessageService _messageService;
-        private IManagementStorage _managementStorage;
-        private IAdminStorage _userStorage;
-        private IOrderStorage _orderStorage;
 
-        public MessageController(IMessageService messageService, IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+        public MessageController()
         {
-            _messageService = messageService;
-            _managementStorage = managementStorage;
-            _orderStorage = orderStorage;
-            _userStorage = userStorage;
+            _messageService = new MessageService();
         }
 
         [Route(@"api/message/update")]
         public async Task<OkResult> Update([FromBody]Update update)
         {
-            await _messageService.Execute(update, _managementStorage, _userStorage, _orderStorage);
+            await _messageService.Execute(update);
             return Ok();
         }
     }

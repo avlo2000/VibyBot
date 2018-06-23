@@ -200,9 +200,15 @@
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\TelegramInteractionPOC - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TelegramInteractionPOC20180606044854 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\VibyBot - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\VibyBotTelegramAPI20180608092943 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\VibyBotTelegramAPI20180611094256 - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VibyBot.ControlTests\VibyBot.ControlTests.csproj">
+      <Project>{E890C736-A818-4B2C-88AA-0671F7D7F1B0}</Project>
+      <Name>VibyBot.ControlTests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VibyBot.Control\VibyBot.Control.csproj">
       <Project>{6a494b83-b43b-4680-8fc9-2f4b0e13a1e6}</Project>
       <Name>VibyBot.Control</Name>
@@ -215,6 +221,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -236,6 +245,9 @@
           <CustomServerUrl>
           </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:9486/" workingDir="" />
+          </servers>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

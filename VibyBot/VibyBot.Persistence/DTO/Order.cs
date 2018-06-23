@@ -4,7 +4,6 @@ namespace VibyBot.Persistence.DTO
 {
     public class Order
     { 
-        //поля мають заповнюватися в тому порядку в якому вони написані
         public long OrderId { get; set; }
 
         public long ClientId { get; private set; }
@@ -19,7 +18,6 @@ namespace VibyBot.Persistence.DTO
 
         public string Adress { get; set; }
 
-        //потім в MessageProcessing якщо користувач введе Львів тоді це встановимо у Cash
         public PaymentType Payment { get; set; }
 
         public bool Ready { get; set; }

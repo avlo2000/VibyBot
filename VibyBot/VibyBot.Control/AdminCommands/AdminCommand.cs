@@ -21,7 +21,7 @@ namespace VibyBot.Control.AdminCommands
 
         public AdminCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
         {
-            _managerInfo = _managementStorage.GetConfig();
+            _managerInfo = managementStorage.GetConfig();
             _managementStorage = managementStorage;
             _orderStorage = orderStorage;
             _adminStorage = userStorage;

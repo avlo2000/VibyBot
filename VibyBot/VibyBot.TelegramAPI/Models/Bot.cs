@@ -41,5 +41,10 @@ namespace VibyBot.TelegramAPI.Models
 
             return _client;
         }
+
+        public static TelegramBotClient Get()
+        {
+            return _client;
+        }
     }
 }
