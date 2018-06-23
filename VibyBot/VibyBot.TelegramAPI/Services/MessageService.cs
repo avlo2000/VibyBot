@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Results;
 using Telegram.Bot.Types;
-using VibyBot.Persistence.Contracts;
+using VibyBot.Control.AdminCommands;
 using VibyBot.TelegramAPI.Models;
 
 namespace TelegramInteractionPOC.Services
@@ -12,15 +11,17 @@ namespace TelegramInteractionPOC.Services
         public async Task Execute([FromBody]Update update)
         {
             var client = Bot.Get();
-            var adminCommands = Bot.AdminCommands;
+            var adminCommands = Bot.Commands;
             var message = update.Message;
             foreach (var command in adminCommands)
-                if (command.Contains(message.Text))
+            {
+                if (command.Contains(message.Text) && command.GetType().BaseType == typeof(AdminCommand))
                 {
                     string answer = command.Execute(message.Text, message.Chat.Id);
                     await client.SendTextMessageAsync(message.Chat, answer);
                     break;
                 }
+            }
         }
     }
 }
