@@ -11,10 +11,13 @@ namespace VibyBot.Control.AdminCommands
         {
             string answer = "Дотупні принти:" + Environment.NewLine;
 
+            int couter = 1;
             foreach (var print in _managerInfo.Prints)
             {
+                answer += couter.ToString() + @") ";
                 answer += print;
                 answer += Environment.NewLine;
+                couter++;
             }
 
             return answer;
