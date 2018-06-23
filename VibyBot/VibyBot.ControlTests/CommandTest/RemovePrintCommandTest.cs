@@ -19,11 +19,8 @@ namespace VibyBot.ControlTests.CommandTest
         {
             msi = new ManagementStorageMock();
 
-            ManagerInfo mi = new ManagerInfo
-            {
-                Password = "123",
-                Prints = new HashSet<string>() { "123", "456", "789" }
-            };
+            ManagerInfo mi = new ManagerInfo();
+            mi.Prints = new HashSet<string>{ "123", "456", "789" };
             msi.UpdateConfig(mi);
 
             asi = new AdminStorageMock();

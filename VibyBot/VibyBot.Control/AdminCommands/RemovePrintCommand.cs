@@ -4,7 +4,7 @@ namespace VibyBot.Control.AdminCommands
 {
     public class RemovePrintCommand : AdminCommand
     {
-        public override string Name => @"/rmprint";
+        public override string Name => @"/rmprint ";
 
         public override string Execute(string message, long chatId)
         {

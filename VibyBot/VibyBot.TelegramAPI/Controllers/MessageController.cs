@@ -3,7 +3,6 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using Telegram.Bot.Types;
 using TelegramInteractionPOC.Services;
-using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.TelegramAPI.Controllers
 {
