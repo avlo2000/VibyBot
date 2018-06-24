@@ -50,6 +50,8 @@
     <Compile Include="AdminCommands\RemovePrintCommand.cs" />
     <Compile Include="AdminCommands\ShowPrintsCommand.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="OrderCommands\OrderCommand.cs" />
+    <Compile Include="OrderCommands\StartCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,25 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Telegram.Bot;
-using Telegram.Bot.Types;
 using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Control.OrderCommands
 {
-    abstract public class OrderCommand
+    abstract public class OrderCommand : ICommand
     {
         public abstract string Name { get; }
 
-        abstract public Task Execute(Message message, TelegramBotClient client);
+        abstract public Tuple<string, List<string>> OrderExecute(string message, long chatId);
 
-        public string Answer { get; protected set; }
+        string ICommand.Execute(string message, long chatId)
+        {
+            throw new NotImplementedException();
+        }
 
-        public virtual bool Contains(string command)
+        public bool Contains(string command)
         {
             return command.Contains(Name);
         }
+
+        protected IManagementStorage _managementStorage;
+        protected ManagerInfo _managerInfo;
+
+        public OrderCommand(IManagementStorage managementStorage)
+        {
+            _managerInfo = managementStorage.GetConfig();
+            _managementStorage = managementStorage;
+        }
+
     }
 }

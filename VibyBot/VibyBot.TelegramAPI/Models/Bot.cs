@@ -6,6 +6,7 @@ using System.Web;
 using Telegram.Bot;
 using VibyBot.Control;
 using VibyBot.Control.AdminCommands;
+using VibyBot.Control.OrderCommands;
 using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.TelegramAPI.Models
@@ -20,11 +21,14 @@ namespace VibyBot.TelegramAPI.Models
         public static void RegistateCommands(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)
         {
             _commandsList = new List<ICommand>();
+            //admin commands
             _commandsList.Add(new AccessCommand(managementStorage, adminStorage, orderStorage));
             _commandsList.Add(new AddPrintCommand(managementStorage, adminStorage, orderStorage));
             _commandsList.Add(new ShowPrintsCommand(managementStorage, adminStorage, orderStorage));
             _commandsList.Add(new RemovePrintCommand(managementStorage, adminStorage, orderStorage));
             _commandsList.Add(new CloseOrderCommand(managementStorage, adminStorage, orderStorage));
+            //order commands
+            _commandsList.Add(new StartCommand(managementStorage));
         }
 
         public static async Task<TelegramBotClient> GetAsync(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)

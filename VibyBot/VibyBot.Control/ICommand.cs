@@ -9,6 +9,7 @@ namespace VibyBot.Control
     public interface ICommand
     {
         string Execute(string message, long chatId);
+        Tuple<string, List<string>> OrderExecute(string message, long chatId);
         bool Contains(string command);
     }
 }

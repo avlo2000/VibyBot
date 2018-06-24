@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Telegram.Bot;
-using Telegram.Bot.Types;
-using VibyBot.Conrol;
+using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.Control.OrderCommands
 {
@@ -13,28 +11,17 @@ namespace VibyBot.Control.OrderCommands
     {
         public override string Name => @"/start";
 
-        public async override Task Execute(Message message, TelegramBotClient client)
+        public override Tuple<string, List<string>> OrderExecute(string message, long chatId)
         {
-            var chatId = message.Chat.Id;
-            Answer = "Чи бажаєте ви щось замовити?";
-
-            var keyboard = new Telegram.Bot.Types.ReplyMarkups.ReplyKeyboardMarkup(
-            new Telegram.Bot.Types.ReplyMarkups.KeyboardButton[][]
-                {
-                // First row
-                    new Telegram.Bot.Types.ReplyMarkups.KeyboardButton[] {
-                        // First column
-                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("ТАК"),
-                        new Telegram.Bot.Types.ReplyMarkups.KeyboardButton("НІ")
-                    },
-            });
-
-            await client.SendTextMessageAsync(chatId, Answer, Telegram.Bot.Types.Enums.ParseMode.Default, false, false, 0, keyboard);
+            List<string> labels = new List<string>() { "Так", "Ні" };
+            var answer = new Tuple<string, List<string>>("Ви бажаєте зробити замовлення?", labels);
+            return answer;
         }
 
-        public override bool Contains(string command)
+        public StartCommand(IManagementStorage managementStorage)
+            : base(managementStorage)
         {
-            return command.Contains(Name);
         }
+
     }
 }

@@ -1,4 +1,6 @@
-﻿using VibyBot.Persistence.Contracts;
+﻿using System;
+using System.Collections.Generic;
+using VibyBot.Persistence.Contracts;
 using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Control.AdminCommands
@@ -12,6 +14,11 @@ namespace VibyBot.Control.AdminCommands
         public virtual bool Contains(string command)
         {
             return command.Contains(Name);
+        }
+
+        public Tuple<string, List<string>> OrderExecute(string message, long chatId)
+        {
+            throw new NotImplementedException();
         }
 
         protected IManagementStorage _managementStorage;
