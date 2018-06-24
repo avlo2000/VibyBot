@@ -11,9 +11,9 @@ namespace VibyBot.Persistence.DTO.Additional
         public static ClothesType Cap {get => new ClothesType() { Type = _Cap}; }
         public static ClothesType Polo { get => new ClothesType() { Type = _Polo }; }
 
-        private const string _Tshirt = "футболка";
-        private const string _Cap = "кепка";
-        private const string _Polo = "поло";
+        private const string _Tshirt = "Футболка";
+        private const string _Cap = "Кепка";
+        private const string _Polo = "Поло";
 
         public ClothesType(){ }
 

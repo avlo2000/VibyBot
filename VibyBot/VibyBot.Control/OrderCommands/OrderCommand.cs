@@ -17,7 +17,7 @@ namespace VibyBot.Control.OrderCommands
             throw new NotImplementedException();
         }
 
-        public bool Contains(string command)
+        public virtual bool Contains(string command)
         {
             return command.Contains(Name);
         }
