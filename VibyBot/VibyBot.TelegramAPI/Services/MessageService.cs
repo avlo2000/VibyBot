@@ -32,17 +32,14 @@ namespace TelegramInteractionPOC.Services
 
                     if (labels.Count != 0)
                     {
-                        List<KeyboardButton> buttons = new List<KeyboardButton>();
+                        List<KeyboardButton[]> buttons = new List<KeyboardButton[]>();
 
                         foreach (string label in labels)
                         {
-                            buttons.Add(new KeyboardButton(label));
+                            buttons.Add(new[] { new KeyboardButton(label) });
                         }
 
-                        var inlineKeyboard = new ReplyKeyboardMarkup(new[]
-                        {
-                          buttons.ToArray()
-                        });
+                        var inlineKeyboard = new ReplyKeyboardMarkup(buttons.ToArray());
                         inlineKeyboard.ResizeKeyboard = true;
 
                         await client.SendTextMessageAsync(message.Chat, answer, replyMarkup: inlineKeyboard);

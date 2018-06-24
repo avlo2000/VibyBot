@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 using VibyBot.Persistence.DTO.Additional;
 
 namespace VibyBot.Control.OrderCommands
