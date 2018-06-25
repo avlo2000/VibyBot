@@ -22,7 +22,7 @@ namespace VibyBot.Control.OrderCommands
             return command.Contains(Name);
         }
 
-        protected Order _currentOrder;
+        protected static Order _currentOrder;
 
         protected IManagementStorage _managementStorage;
         protected IOrderStorage _orderStorage;

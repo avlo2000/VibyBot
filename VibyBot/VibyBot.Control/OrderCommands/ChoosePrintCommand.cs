@@ -18,7 +18,6 @@ namespace VibyBot.Control.OrderCommands
             Tuple<string, List<string>> answer = new Tuple<string, List<string>>("Для оформлення замовлення напишіть /start", labels);
             if (message.Contains(ClothesType.Tshirt.Type))
             {
-
                 _currentOrder.ClothesType = ClothesType.Tshirt;
 
                 labels.Clear();
@@ -27,7 +26,7 @@ namespace VibyBot.Control.OrderCommands
                 {
                     labels.Add(print);
                 }
-                return answer = new Tuple<string, List<string>>("З яким принтом ви бажаєте придбати" + _currentOrder.ClothesType.Type + "?", labels);
+                return answer = new Tuple<string, List<string>>("З яким принтом ви бажаєте придбати футболку?", labels);
             }
 
             if (message.Contains(ClothesType.Polo.Type))
@@ -41,7 +40,7 @@ namespace VibyBot.Control.OrderCommands
                 {
                     labels.Add(print);
                 }
-                return answer = new Tuple<string, List<string>>("З яким принтом ви бажаєте придбати" + _currentOrder.ClothesType.Type + "?", labels);
+                return answer = new Tuple<string, List<string>>("З яким принтом ви бажаєте придбати поло?", labels);
             }
 
             if (message.Contains(ClothesType.Cap.Type))
@@ -55,7 +54,7 @@ namespace VibyBot.Control.OrderCommands
                 {
                     labels.Add(print);
                 }
-                return answer = new Tuple<string, List<string>>("З яким принтом ви бажаєте придбати" + _currentOrder.ClothesType.Type + "?", labels);
+                return answer = new Tuple<string, List<string>>("З яким принтом ви бажаєте придбати кепку?", labels);
             }
 
             return answer;

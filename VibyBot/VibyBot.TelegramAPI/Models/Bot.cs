@@ -28,9 +28,9 @@ namespace VibyBot.TelegramAPI.Models
             _commandsList.Add(new RemovePrintCommand(managementStorage, adminStorage, orderStorage));
             _commandsList.Add(new CloseOrderCommand(managementStorage, adminStorage, orderStorage));
             //order commands
-            _commandsList.Add(new StartCommand(managementStorage));
-            _commandsList.Add(new ChooseTypeCommand(managementStorage));
-            _commandsList.Add(new ChoosePrintCommand(managementStorage));
+            _commandsList.Add(new StartCommand(managementStorage, orderStorage));
+            _commandsList.Add(new ChooseTypeCommand(managementStorage, orderStorage));
+            _commandsList.Add(new ChoosePrintCommand(managementStorage, orderStorage));
         }
 
         public static async Task<TelegramBotClient> GetAsync(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)
