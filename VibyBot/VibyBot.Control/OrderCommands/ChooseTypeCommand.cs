@@ -19,6 +19,9 @@ namespace VibyBot.Control.OrderCommands
             Tuple<string, List<string>> answer = new Tuple<string, List<string>>("Для оформлення замовлення напишіть /start", labels);
             if (message.Contains("Так"))
             {
+                _currentOrder = new Order(chatId);
+                _currentOrder.OrderId = _currentOrder.GetHashCode()+message.GetHashCode()+chatId.GetHashCode();
+
                 labels.Clear();
                 labels = new List<string>() { ClothesType.Cap.Type, ClothesType.Polo.Type, ClothesType.Tshirt.Type };
                 answer = new Tuple<string, List<string>>("Що ви бажаєте придбати?", labels);
@@ -31,8 +34,8 @@ namespace VibyBot.Control.OrderCommands
             return command.Contains("Так") || command.Contains("Ні");
         }
 
-        public ChooseTypeCommand(IManagementStorage managementStorage)
-           : base(managementStorage)
+        public ChooseTypeCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)
+           : base(managementStorage, orderStorage)
         {
         }
     }

@@ -22,13 +22,17 @@ namespace VibyBot.Control.OrderCommands
             return command.Contains(Name);
         }
 
+        protected Order _currentOrder;
+
         protected IManagementStorage _managementStorage;
+        protected IOrderStorage _orderStorage;
         protected ManagerInfo _managerInfo;
 
-        public OrderCommand(IManagementStorage managementStorage)
+        public OrderCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)
         {
             _managerInfo = managementStorage.GetConfig();
             _managementStorage = managementStorage;
+            _orderStorage = orderStorage;
         }
 
     }
