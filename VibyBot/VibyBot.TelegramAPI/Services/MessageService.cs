@@ -16,12 +16,14 @@ namespace TelegramInteractionPOC.Services
             var client = Bot.Get();
             var adminCommands = Bot.Commands;
             var message = update.Message;
+            bool isFind = false;
             foreach (var command in adminCommands)
             {
                 if (command.Contains(message.Text) && command.GetType().BaseType == typeof(AdminCommand))
                 {
                     string answer = command.Execute(message.Text, message.Chat.Id).Text;
                     await client.SendTextMessageAsync(message.Chat, answer, replyMarkup: new ReplyKeyboardRemove());
+                    isFind = true;
                     break;
                 }
                 if (command.Contains(message.Text) && command.GetType().BaseType == typeof(OrderCommand))
@@ -43,16 +45,20 @@ namespace TelegramInteractionPOC.Services
                         inlineKeyboard.ResizeKeyboard = true;
 
                         await client.SendTextMessageAsync(message.Chat, answer, replyMarkup: inlineKeyboard);
+                        isFind = true;
                         break;
-
                     }
                     else
                     {
                         await client.SendTextMessageAsync(message.Chat, answer, replyMarkup: new ReplyKeyboardRemove());
+                        isFind = true;
                         break;
-
                     }
                 }
+            }
+            if (!isFind)
+            {
+                await client.SendTextMessageAsync(message.Chat, "Некоректний ввід спробуйте ще раз.");
             }
         }
     }

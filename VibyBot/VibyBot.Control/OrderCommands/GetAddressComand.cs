@@ -21,7 +21,7 @@ namespace VibyBot.Control.OrderCommands
             if (pip.Length == 3)
             {
                 _currentOrder.Name = message;
-                answer = new Tuple<string, List<string>>("Будь ласка введіть свою адресу.", labels);
+                answer = new Tuple<string, List<string>>("Будь ласка через крапку з комою(;) введіть назву області назву населеного пункту та номер відділення Нової Пошти", labels);
             }
             return new Answer(answer.Item1, answer.Item2);
         }

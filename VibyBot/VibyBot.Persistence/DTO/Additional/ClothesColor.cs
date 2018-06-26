@@ -11,9 +11,9 @@ namespace VibyBot.Persistence.DTO.Additional
         public static ClothesColor White { get => new ClothesColor() { Color = _white }; }
         public static ClothesColor Yellow { get => new ClothesColor() { Color = _yellow }; }
 
-        private const string _black = "чорний";
-        private const string _white = "білий";
-        private const string _yellow = "жовтий";
+        private const string _black = "Чорний";
+        private const string _white = "Білий";
+        private const string _yellow = "Жовтий";
 
         public ClothesColor() { }
 
