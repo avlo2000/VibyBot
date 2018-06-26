@@ -10,7 +10,7 @@ namespace VibyBot.Control.OrderCommands
 {
     public class GetPaymentTypeCommand : OrderCommand
     {
-        public override string Name => throw new NotImplementedException();
+        public override string Name => @"/getpaymenttype";
 
         public override Tuple<string, List<string>> OrderExecute(string message, long chatId)
         {
