@@ -43,12 +43,15 @@ namespace TelegramInteractionPOC.Services
                         inlineKeyboard.ResizeKeyboard = true;
 
                         await client.SendTextMessageAsync(message.Chat, answer, replyMarkup: inlineKeyboard);
+                        break;
+
                     }
                     else
                     {
                         await client.SendTextMessageAsync(message.Chat, answer, replyMarkup: new ReplyKeyboardRemove());
+                        break;
+
                     }
-                    break;
                 }
             }
         }

@@ -7,7 +7,7 @@ namespace VibyBot.Persistence.DTO
     {
         public ManagerInfo()
         {
-            Prints = new HashSet<string>();
+            Prints = new HashSet<string>() { "java", "c#", "c++"};
             Password = "skleroz";
         }
 

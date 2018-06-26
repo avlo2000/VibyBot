@@ -31,7 +31,7 @@ namespace VibyBot.Control.OrderCommands
             {
                 _currentOrder.ClothesColor = ClothesColor.White;
                 labels.Clear();
-                if (_currentOrder.ClothesType == ClothesType.Tshirt)
+                if (_currentOrder.ClothesType.Type == ClothesType.Tshirt.Type)
                 {
                     foreach (string print in _managementStorage.GetConfig().Prints)
                     {
@@ -39,7 +39,7 @@ namespace VibyBot.Control.OrderCommands
                     }
                     answer = new Tuple<string, List<string>>("Виріб з яким принтом ви бажаєте замовити?", labels);
                 }
-                if (_currentOrder.ClothesType == ClothesType.Polo)
+                if (_currentOrder.ClothesType.Type == ClothesType.Polo.Type)
                 {
                     foreach (string print in _managementStorage.GetConfig().Prints)
                     {
@@ -53,7 +53,7 @@ namespace VibyBot.Control.OrderCommands
             {
                 _currentOrder.ClothesColor = ClothesColor.Yellow;
                 labels.Clear();
-                if (_currentOrder.ClothesType == ClothesType.Tshirt)
+                if (_currentOrder.ClothesType.Type == ClothesType.Tshirt.Type)
                 {
                     foreach (string print in _managementStorage.GetConfig().Prints)
                     {
