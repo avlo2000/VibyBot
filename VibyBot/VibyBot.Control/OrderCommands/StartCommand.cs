@@ -19,8 +19,8 @@ namespace VibyBot.Control.OrderCommands
             return answer;
         }
 
-        public StartCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)
-            : base(managementStorage, orderStorage)
+        public StartCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+            : base(managementStorage, userStorage, orderStorage)
         {
         }
 

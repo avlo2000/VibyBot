@@ -34,8 +34,8 @@ namespace VibyBot.Control.OrderCommands
             return command.Contains("Так") || command.Contains("Ні");
         }
 
-        public ChooseTypeCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)
-           : base(managementStorage, orderStorage)
+        public ChooseTypeCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+           : base(managementStorage,  userStorage, orderStorage)
         {
         }
     }

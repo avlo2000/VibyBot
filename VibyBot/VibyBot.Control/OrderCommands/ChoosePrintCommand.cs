@@ -71,8 +71,8 @@ namespace VibyBot.Control.OrderCommands
             return command.Contains(ClothesColor.Black.Color) || command.Contains(ClothesColor.White.Color) || command.Contains(ClothesColor.Yellow.Color);
         }
 
-        public ChoosePrintCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)
-           : base(managementStorage, orderStorage)
+        public ChoosePrintCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+           : base(managementStorage, userStorage, orderStorage)
         {
         }
     }

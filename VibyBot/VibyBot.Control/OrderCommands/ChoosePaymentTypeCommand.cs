@@ -8,7 +8,7 @@ using VibyBot.Persistence.DTO.Additional;
 
 namespace VibyBot.Control.OrderCommands
 {
-    public class GetPaymentTypeCommand : OrderCommand
+    public class ChoosePaymentTypeCommand : OrderCommand
     {
         public override string Name => @"/getpaymenttype";
 
@@ -34,11 +34,11 @@ namespace VibyBot.Control.OrderCommands
 
         public override bool Contains(string command)
         {
-            return (command.Contains("м.") || command.Contains("місто") || command.Contains("смт") || command.Contains("селище міського типу") || command.Contains("село"))&&(command.Contains("вул.") || command.Contains("вулиця") || command.Contains("відділення"));
+            return command.Contains("м.") || command.Contains("місто") || command.Contains("смт") || command.Contains("селище міського типу") || command.Contains("село");
         }
 
-        public GetPaymentTypeCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)
-           : base(managementStorage, orderStorage)
+        public ChoosePaymentTypeCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+           : base(managementStorage, userStorage, orderStorage)
         {
         }
     }

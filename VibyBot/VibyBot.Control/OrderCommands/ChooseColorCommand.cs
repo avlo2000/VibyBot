@@ -46,8 +46,8 @@ namespace VibyBot.Control.OrderCommands
             return command.Contains(ClothesType.Cap.Type) || command.Contains(ClothesType.Polo.Type) || command.Contains(ClothesType.Tshirt.Type);
         }
 
-        public ChooseColorCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)
-            : base(managementStorage, orderStorage)
+        public ChooseColorCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+            : base(managementStorage, userStorage, orderStorage)
         {
 
         }

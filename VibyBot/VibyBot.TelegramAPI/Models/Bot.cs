@@ -28,13 +28,15 @@ namespace VibyBot.TelegramAPI.Models
             _commandsList.Add(new RemovePrintCommand(managementStorage, adminStorage, orderStorage));
             _commandsList.Add(new CloseOrderCommand(managementStorage, adminStorage, orderStorage));
             //order commands
-            _commandsList.Add(new StartCommand(managementStorage, orderStorage));
-            _commandsList.Add(new ChooseTypeCommand(managementStorage, orderStorage));
-            _commandsList.Add(new ChooseColorCommand(managementStorage, orderStorage));
-            _commandsList.Add(new ChoosePrintCommand(managementStorage, orderStorage));
-            _commandsList.Add(new GetPhoneNumberCommand(managementStorage, orderStorage));
-            _commandsList.Add(new GetNameCommand(managementStorage, orderStorage));
-            _commandsList.Add(new GetAddressComand(managementStorage, orderStorage));
+            _commandsList.Add(new StartCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new ChooseTypeCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new ChooseColorCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new ChoosePrintCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new GetPhoneNumberCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new GetNameCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new GetAddressComand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new ChoosePaymentTypeCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new FormOrderCommand(managementStorage, adminStorage, orderStorage));
         }
 
         public static async Task<TelegramBotClient> GetAsync(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)

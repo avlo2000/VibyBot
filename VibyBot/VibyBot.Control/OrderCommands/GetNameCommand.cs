@@ -28,8 +28,8 @@ namespace VibyBot.Control.OrderCommands
             return command.Contains("+380") && command.Length == 13;
         }
 
-        public GetNameCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)
-           : base(managementStorage, orderStorage)
+        public GetNameCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+           : base(managementStorage, userStorage, orderStorage)
         {
         }
 

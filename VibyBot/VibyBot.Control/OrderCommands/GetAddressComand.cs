@@ -31,8 +31,8 @@ namespace VibyBot.Control.OrderCommands
             return pip.Length == 3;
         }
 
-        public GetAddressComand(IManagementStorage managementStorage, IOrderStorage orderStorage)
-           : base(managementStorage, orderStorage)
+        public GetAddressComand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+           : base(managementStorage, userStorage, orderStorage)
         {
         }
     }

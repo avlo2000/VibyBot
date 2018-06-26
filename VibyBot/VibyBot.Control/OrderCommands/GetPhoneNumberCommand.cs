@@ -40,8 +40,8 @@ namespace VibyBot.Control.OrderCommands
             return result;
         }
 
-        public GetPhoneNumberCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)
-           : base(managementStorage, orderStorage)
+        public GetPhoneNumberCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
+           : base(managementStorage, userStorage, orderStorage)
         {
         }
     }
