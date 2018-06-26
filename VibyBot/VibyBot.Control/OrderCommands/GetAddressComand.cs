@@ -7,7 +7,7 @@ using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.Control.OrderCommands
 {
-    public class ChoosePlaceComand : OrderCommand
+    public class GetAddressComand : OrderCommand
     {
         public override string Name => @"/chooseplace";
 
@@ -20,9 +20,7 @@ namespace VibyBot.Control.OrderCommands
             if (pip.Length == 3)
             {
                 _currentOrder.Name = message;
-                labels.Clear();
-                labels = new List<string>() { "Львів", "Інший населений пункт" };
-                answer = new Tuple<string, List<string>>("Виберіть населений пункт. У Львові оплата готівкою при отриманні на руки, в інші населені пункти доставка Новою Поштою", labels);
+                answer = new Tuple<string, List<string>>("Будь ласка введіть свою адресу.", labels);
             }
             return answer;
         }
@@ -33,7 +31,7 @@ namespace VibyBot.Control.OrderCommands
             return pip.Length == 3;
         }
 
-        public ChoosePlaceComand(IManagementStorage managementStorage, IOrderStorage orderStorage)
+        public GetAddressComand(IManagementStorage managementStorage, IOrderStorage orderStorage)
            : base(managementStorage, orderStorage)
         {
         }

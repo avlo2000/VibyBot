@@ -51,9 +51,10 @@
     <Compile Include="AdminCommands\ShowPrintsCommand.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="OrderCommands\ChooseColorCommand.cs" />
-    <Compile Include="OrderCommands\ChoosePlaceComand.cs" />
+    <Compile Include="OrderCommands\GetAddressComand.cs" />
     <Compile Include="OrderCommands\ChoosePrintCommand.cs" />
     <Compile Include="OrderCommands\GetNameCommand.cs" />
+    <Compile Include="OrderCommands\GetPaymentTypeCommand.cs" />
     <Compile Include="OrderCommands\GetPhoneNumberCommand.cs" />
     <Compile Include="OrderCommands\OrderCommand.cs" />
     <Compile Include="OrderCommands\StartCommand.cs" />
