@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 using VibyBot.Persistence.DTO.Additional;
 
 namespace VibyBot.Control.OrderCommands
@@ -9,7 +10,7 @@ namespace VibyBot.Control.OrderCommands
     {
         public override string Name => @"/formorder";
 
-        public override Tuple<string, List<string>> OrderExecute(string message, long chatId)
+        public override Answer Execute(string message, long chatId)
         {
             List<string> labels = new List<string>();
             Tuple<string, List<string>> answer = new Tuple<string, List<string>>("Для оформлення замовлення напишіть /start", labels);
@@ -29,7 +30,7 @@ namespace VibyBot.Control.OrderCommands
                 answer = new Tuple<string, List<string>>("Ваше замовлення відправлене. Наш менеджер з вами зв'яжеться.", labels);
 
             }
-            return answer;
+            return new Answer(answer.Item1, answer.Item2);
         }
         public override bool Contains(string command)
         {

@@ -1,4 +1,5 @@
 ﻿using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Control.AdminCommands
 {
@@ -7,7 +8,7 @@ namespace VibyBot.Control.AdminCommands
     {
         public override string Name => @"/admin ";
 
-        public override string Execute(string message, long chatId)
+        public override Answer Execute(string message, long chatId)
         {
             string answer;
 
@@ -22,7 +23,7 @@ namespace VibyBot.Control.AdminCommands
             else
                 answer = "Неправильний пароль.";
 
-            return answer;
+            return new Answer(answer);
         }
 
         public AccessCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage) 

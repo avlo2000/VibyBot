@@ -10,12 +10,7 @@ namespace VibyBot.Control.OrderCommands
     {
         public abstract string Name { get; }
 
-        abstract public Tuple<string, List<string>> OrderExecute(string message, long chatId);
-
-        string ICommand.Execute(string message, long chatId)
-        {
-            throw new NotImplementedException();
-        }
+        abstract public Answer Execute(string message, long chatId);
 
         public virtual bool Contains(string command)
         {

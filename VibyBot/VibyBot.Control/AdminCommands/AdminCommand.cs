@@ -9,7 +9,7 @@ namespace VibyBot.Control.AdminCommands
     {
         public abstract string Name { get; }
 
-        abstract public string Execute(string message, long chatId);
+        abstract public Answer Execute(string message, long chatId);
 
         public virtual bool Contains(string command)
         {

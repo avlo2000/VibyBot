@@ -20,15 +20,15 @@ namespace TelegramInteractionPOC.Services
             {
                 if (command.Contains(message.Text) && command.GetType().BaseType == typeof(AdminCommand))
                 {
-                    string answer = command.Execute(message.Text, message.Chat.Id);
+                    string answer = command.Execute(message.Text, message.Chat.Id).Text;
                     await client.SendTextMessageAsync(message.Chat, answer, replyMarkup: new ReplyKeyboardRemove());
                     break;
                 }
                 if (command.Contains(message.Text) && command.GetType().BaseType == typeof(OrderCommand))
                 {
-                    string answer = command.OrderExecute(message.Text, message.Chat.Id).Item1;
+                    string answer = command.Execute(message.Text, message.Chat.Id).Text;
 
-                    List<string> labels = command.OrderExecute(message.Text, message.Chat.Id).Item2;
+                    List<string> labels = command.Execute(message.Text, message.Chat.Id).Buttoms;
 
                     if (labels.Count != 0)
                     {

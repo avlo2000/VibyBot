@@ -12,11 +12,11 @@ namespace VibyBot.Control.OrderCommands
     {
         public override string Name => @"/start";
 
-        public override Tuple<string, List<string>> OrderExecute(string message, long chatId)
+        public override Answer Execute(string message, long chatId)
         {
             List<string> labels = new List<string>() { "Так", "Ні" };
             var answer = new Tuple<string, List<string>>("Ви бажаєте зробити замовлення?", labels);
-            return answer;
+            return new Answer(answer.Item1, answer.Item2);
         }
 
         public StartCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)

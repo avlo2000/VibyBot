@@ -1,4 +1,5 @@
 ﻿using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Control.AdminCommands
 {
@@ -6,7 +7,7 @@ namespace VibyBot.Control.AdminCommands
     {
         public override string Name => @"/close ";
 
-        public override string Execute(string message, long chatId)
+        public override Answer Execute(string message, long chatId)
         {
             var splCommand = message.Split(' ');
             var orderId = int.Parse(splCommand[1]);
@@ -19,7 +20,7 @@ namespace VibyBot.Control.AdminCommands
             else
                 answer = "Немає дозволу.";
 
-            return answer;
+            return new Answer(answer);
         }
 
         public CloseOrderCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)

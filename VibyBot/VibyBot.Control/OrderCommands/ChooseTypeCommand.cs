@@ -13,7 +13,7 @@ namespace VibyBot.Control.OrderCommands
     {
         public override string Name => @"/choosetype";
 
-        public override Tuple<string, List<string>> OrderExecute(string message, long chatId)
+        public override Answer Execute(string message, long chatId)
         {
             List<string> labels = new List<string>();
             Tuple<string, List<string>> answer = new Tuple<string, List<string>>("Для оформлення замовлення напишіть /start", labels);
@@ -26,7 +26,7 @@ namespace VibyBot.Control.OrderCommands
                 labels = new List<string>() { ClothesType.Cap.Type, ClothesType.Polo.Type, ClothesType.Tshirt.Type };
                 answer = new Tuple<string, List<string>>("Що ви бажаєте придбати?", labels);
             }
-            return answer;
+            return new Answer(answer.Item1, answer.Item2);
         }
 
         public override bool Contains(string command)

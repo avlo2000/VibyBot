@@ -1,4 +1,5 @@
 ﻿using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Control.AdminCommands
 {
@@ -6,7 +7,7 @@ namespace VibyBot.Control.AdminCommands
     {
         public override string Name => @"/rmprint ";
 
-        public override string Execute(string message, long chatId)
+        public override Answer Execute(string message, long chatId)
         {
             var splCommand = message.Split(' ');
             string answer;
@@ -26,7 +27,7 @@ namespace VibyBot.Control.AdminCommands
 
             _managementStorage.UpdateConfig(_managerInfo);
 
-            return answer;
+            return new Answer(answer);
         }
 
         public RemovePrintCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)

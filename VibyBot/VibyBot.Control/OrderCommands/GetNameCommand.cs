@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 
 namespace VibyBot.Control.OrderCommands
 {
@@ -11,7 +12,7 @@ namespace VibyBot.Control.OrderCommands
     {
         public override string Name => @"/getname";
 
-        public override Tuple<string, List<string>> OrderExecute(string message, long chatId)
+        public override Answer Execute(string message, long chatId)
         {
             List<string> labels = new List<string>();
             Tuple<string, List<string>> answer = new Tuple<string, List<string>>("Для оформлення замовлення напишіть /start", labels);
@@ -20,7 +21,7 @@ namespace VibyBot.Control.OrderCommands
                 _currentOrder.PhoneNumber = message;
                 answer = new Tuple<string, List<string>>("Введіть через пробіл свій ПІП(прізвище, ім'я, по батькові) будь ласка" + Environment.NewLine + "Наприклад Петров Петро Петрович. Будь ласка не вводьте жодних додаткових символів", labels);
             }
-            return answer;
+            return new Answer(answer.Item1, answer.Item2);
         }
 
         public override bool Contains(string command)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VibyBot.Persistence.Contracts;
+using VibyBot.Persistence.DTO;
 using VibyBot.Persistence.DTO.Additional;
 
 namespace VibyBot.Control.OrderCommands
@@ -12,7 +13,7 @@ namespace VibyBot.Control.OrderCommands
     {
         public override string Name => @"/choosecolor";
 
-        public override Tuple<string, List<string>> OrderExecute(string message, long chatId)
+        public override Answer Execute(string message, long chatId)
         {
             List<string> labels = new List<string>();
             Tuple<string, List<string>> answer = new Tuple<string, List<string>>("Для оформлення замовлення напишіть /start", labels);
@@ -38,7 +39,7 @@ namespace VibyBot.Control.OrderCommands
                 labels = new List<string>() { ClothesColor.Black.Color, ClothesColor.White.Color, ClothesColor.Yellow.Color };
                 answer = new Tuple<string, List<string>>("Якого кольору вибір ви бажаєте придбати?", labels);
             }
-            return answer;
+            return new Answer(answer.Item1, answer.Item2);
         }
 
         public override bool Contains(string command)
