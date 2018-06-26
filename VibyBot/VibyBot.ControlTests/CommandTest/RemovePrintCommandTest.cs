@@ -34,7 +34,7 @@ namespace VibyBot.ControlTests.CommandTest
         [TestMethod]
         public void ExecuteTestTrue()
         {
-            string answer = "Принт видалено.";
+            string answer = "Принт не знайдено.";
             string message = @"/rmprint 123";
             long chatId = 777;
             Assert.AreEqual(answer, AccessCommand.Execute(message, chatId));

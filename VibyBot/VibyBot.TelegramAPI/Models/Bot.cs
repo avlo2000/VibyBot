@@ -30,8 +30,8 @@ namespace VibyBot.TelegramAPI.Models
             //order commands
             _commandsList.Add(new StartCommand(managementStorage, orderStorage));
             _commandsList.Add(new ChooseTypeCommand(managementStorage, orderStorage));
-            _commandsList.Add(new ChoosePrintCommand(managementStorage, orderStorage));
             _commandsList.Add(new ChooseColorCommand(managementStorage, orderStorage));
+            _commandsList.Add(new ChoosePrintCommand(managementStorage, orderStorage));
         }
 
         public static async Task<TelegramBotClient> GetAsync(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)

@@ -16,45 +16,51 @@ namespace VibyBot.Control.OrderCommands
         {
             List<string> labels = new List<string>();
             Tuple<string, List<string>> answer = new Tuple<string, List<string>>("Для оформлення замовлення напишіть /start", labels);
-            if (message.Contains(ClothesType.Tshirt.Type))
+            if (message.Contains(ClothesColor.Black.Color))
             {
-                _currentOrder.ClothesType = ClothesType.Tshirt;
-
+                _currentOrder.ClothesColor = ClothesColor.Black;
                 labels.Clear();
-
                 foreach (string print in _managementStorage.GetConfig().Prints)
                 {
                     labels.Add(print);
                 }
-                answer = new Tuple<string, List<string>>("З яким принтом ви бажаєте придбати футболку?", labels);
+                answer = new Tuple<string, List<string>>("Виріб з яким принтом ви бажаєте замовити?", labels);
             }
 
-            if (message.Contains(ClothesType.Polo.Type))
+            if (message.Contains(ClothesColor.White.Color))
             {
-
-                _currentOrder.ClothesType = ClothesType.Polo;
-
+                _currentOrder.ClothesColor = ClothesColor.White;
                 labels.Clear();
-
-                foreach (string print in _managementStorage.GetConfig().Prints)
+                if (_currentOrder.ClothesType == ClothesType.Tshirt)
                 {
-                    labels.Add(print);
+                    foreach (string print in _managementStorage.GetConfig().Prints)
+                    {
+                        labels.Add(print);
+                    }
+                    answer = new Tuple<string, List<string>>("Виріб з яким принтом ви бажаєте замовити?", labels);
                 }
-                answer = new Tuple<string, List<string>>("З яким принтом ви бажаєте придбати поло?", labels);
+                if (_currentOrder.ClothesType == ClothesType.Polo)
+                {
+                    foreach (string print in _managementStorage.GetConfig().Prints)
+                    {
+                        labels.Add(print);
+                    }
+                    answer = new Tuple<string, List<string>>("Виріб з яким принтом ви бажаєте замовити?", labels);
+                }
             }
 
-            if (message.Contains(ClothesType.Cap.Type))
+            if (message.Contains(ClothesColor.Yellow.Color))
             {
-
-                _currentOrder.ClothesType = ClothesType.Cap;
-
+                _currentOrder.ClothesColor = ClothesColor.Yellow;
                 labels.Clear();
-
-                foreach (string print in _managementStorage.GetConfig().Prints)
+                if (_currentOrder.ClothesType == ClothesType.Tshirt)
                 {
-                    labels.Add(print);
+                    foreach (string print in _managementStorage.GetConfig().Prints)
+                    {
+                        labels.Add(print);
+                    }
+                    answer = new Tuple<string, List<string>>("Виріб з яким принтом ви бажаєте замовити?", labels);
                 }
-                answer = new Tuple<string, List<string>>("З яким принтом ви бажаєте придбати кепку?", labels);
             }
 
             return answer;
@@ -62,7 +68,7 @@ namespace VibyBot.Control.OrderCommands
 
         public override bool Contains(string command)
         {
-            return command.Contains(ClothesType.Cap.Type) || command.Contains(ClothesType.Polo.Type) || command.Contains(ClothesType.Tshirt.Type);
+            return command.Contains(ClothesColor.Black.Color) || command.Contains(ClothesColor.White.Color) || command.Contains(ClothesColor.Yellow.Color);
         }
 
         public ChoosePrintCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)

@@ -16,6 +16,8 @@ namespace VibyBot.Persistence.DTO
 
         public string Name { get; set; }
 
+        public string PhoneNumber { get; set; }
+
         public string Adress { get; set; }
 
         public PaymentType Payment { get; set; }

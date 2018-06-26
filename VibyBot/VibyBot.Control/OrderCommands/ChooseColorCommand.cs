@@ -16,26 +16,38 @@ namespace VibyBot.Control.OrderCommands
         {
             List<string> labels = new List<string>();
             Tuple<string, List<string>> answer = new Tuple<string, List<string>>("Для оформлення замовлення напишіть /start", labels);
-            foreach (string print in _managementStorage.GetConfig().Prints)
+            if (message.Contains(ClothesType.Cap.Type))
             {
-                if (message == print && _currentOrder.ClothesType == ClothesType.Cap)
-                {
-                    _currentOrder.Print = print;
-                    labels = new List<string>() { ClothesColor.Black.Color, ClothesColor.Yellow.Color, ClothesColor.White.Color };
-                    answer = new Tuple<string, List<string>>("Якого кольору ви хочете виріб?/start", labels);
-                    break;
-                }
+                _currentOrder.ClothesType = ClothesType.Cap;
+                labels.Clear();
+                labels = new List<string>() { ClothesColor.Black.Color };
+                answer = new Tuple<string, List<string>>("Якого кольору вибір ви бажаєте придбати?", labels);
+            }
+
+            if (message.Contains(ClothesType.Polo.Type))
+            {
+                _currentOrder.ClothesType = ClothesType.Polo;
+                labels.Clear();
+                labels = new List<string>() { ClothesColor.Black.Color, ClothesColor.White.Color };
+                answer = new Tuple<string, List<string>>("Якого кольору вибір ви бажаєте придбати?", labels);
+            }
+            if (message.Contains(ClothesType.Tshirt.Type))
+            {
+                _currentOrder.ClothesType = ClothesType.Tshirt;
+                labels.Clear();
+                labels = new List<string>() { ClothesColor.Black.Color, ClothesColor.White.Color, ClothesColor.Yellow.Color };
+                answer = new Tuple<string, List<string>>("Якого кольору вибір ви бажаєте придбати?", labels);
             }
             return answer;
         }
 
         public override bool Contains(string command)
         {
-            return command.Contains(ClothesColor.Black.Color) || command.Contains(ClothesColor.Yellow.Color) || command.Contains(ClothesColor.White.Color);
+            return command.Contains(ClothesType.Cap.Type) || command.Contains(ClothesType.Polo.Type) || command.Contains(ClothesType.Tshirt.Type);
         }
 
         public ChooseColorCommand(IManagementStorage managementStorage, IOrderStorage orderStorage)
-            :base(managementStorage, orderStorage)
+            : base(managementStorage, orderStorage)
         {
 
         }
