@@ -10,8 +10,8 @@ namespace VibyBot.Persistence.DTO.Additional
         public static PaymentType Cash { get => new PaymentType() { Type = _cash }; }
         public static PaymentType CreditCard { get => new PaymentType() { Type = _creditCard }; }
 
-        private const string _cash = "готівкою";
-        private const string _creditCard = "кредитною карткою";
+        private const string _cash = "Готівкою";
+        private const string _creditCard = "Кредитною карткою";
 
         public PaymentType() { }
 

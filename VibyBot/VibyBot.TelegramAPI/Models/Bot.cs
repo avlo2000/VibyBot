@@ -6,6 +6,7 @@ using System.Web;
 using Telegram.Bot;
 using VibyBot.Control;
 using VibyBot.Control.AdminCommands;
+using VibyBot.Control.OrderCommands;
 using VibyBot.Persistence.Contracts;
 
 namespace VibyBot.TelegramAPI.Models
@@ -13,18 +14,29 @@ namespace VibyBot.TelegramAPI.Models
     public static class Bot
     {
         private static TelegramBotClient _client;
-        private static List<ICommand> _adminCommandsList;
+        private static List<ICommand> _commandsList;
 
-        public static IReadOnlyList<ICommand> AdminCommands { get => _adminCommandsList.AsReadOnly(); }
+        public static IReadOnlyList<ICommand> Commands { get => _commandsList.AsReadOnly(); }
 
         public static void RegistateCommands(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)
         {
-            _adminCommandsList = new List<ICommand>();
-            _adminCommandsList.Add(new AccessCommand(managementStorage, adminStorage, orderStorage));
-            _adminCommandsList.Add(new AddPrintCommand(managementStorage, adminStorage, orderStorage));
-            _adminCommandsList.Add(new ShowPrintsCommand(managementStorage, adminStorage, orderStorage));
-            _adminCommandsList.Add(new RemovePrintCommand(managementStorage, adminStorage, orderStorage));
-            _adminCommandsList.Add(new CloseOrderCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList = new List<ICommand>();
+            //admin commands
+            _commandsList.Add(new AccessCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new AddPrintCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new ShowPrintsCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new RemovePrintCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new CloseOrderCommand(managementStorage, adminStorage, orderStorage));
+            //order commands
+            _commandsList.Add(new StartCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new ChooseTypeCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new ChooseColorCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new ChoosePrintCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new GetPhoneNumberCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new GetNameCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new GetAddressComand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new ChoosePaymentTypeCommand(managementStorage, adminStorage, orderStorage));
+            _commandsList.Add(new FormOrderCommand(managementStorage, adminStorage, orderStorage));
         }
 
         public static async Task<TelegramBotClient> GetAsync(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)

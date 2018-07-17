@@ -50,6 +50,16 @@
     <Compile Include="AdminCommands\RemovePrintCommand.cs" />
     <Compile Include="AdminCommands\ShowPrintsCommand.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="OrderCommands\ChooseColorCommand.cs" />
+    <Compile Include="OrderCommands\FormOrderCommand.cs" />
+    <Compile Include="OrderCommands\GetAddressComand.cs" />
+    <Compile Include="OrderCommands\ChoosePrintCommand.cs" />
+    <Compile Include="OrderCommands\GetNameCommand.cs" />
+    <Compile Include="OrderCommands\ChoosePaymentTypeCommand.cs" />
+    <Compile Include="OrderCommands\GetPhoneNumberCommand.cs" />
+    <Compile Include="OrderCommands\OrderCommand.cs" />
+    <Compile Include="OrderCommands\StartCommand.cs" />
+    <Compile Include="OrderCommands\ChooseTypeCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

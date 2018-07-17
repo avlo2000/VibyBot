@@ -19,6 +19,7 @@ namespace VibyBot.TelegramAPI.Models
             stringOrder += "Користувач: " + order.Name + Environment.NewLine;
             stringOrder += "Тип одягу: " + order.ClothesType.Type + Environment.NewLine;
             stringOrder += "Колір одягу: " + order.ClothesColor.Color + Environment.NewLine;
+            stringOrder += "Номер телефону: " + order.PhoneNumber + Environment.NewLine;
             stringOrder += "Адресса: " + order.Adress + Environment.NewLine;
             stringOrder += "Споіб оплати: " + order.Payment.Type + Environment.NewLine;
 

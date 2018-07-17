@@ -39,9 +39,11 @@ namespace VibyBot.ControlTests.CommandTest
         public void ExecuteTest()
         {
             string answer = "Дотупні принти:" + Environment.NewLine;
-
+            int counter = 0;
             foreach (var print in msi.GetConfig().Prints)
             {
+                counter++;
+                answer = answer + counter + ") ";
                 answer += print;
                 answer += Environment.NewLine;
             }

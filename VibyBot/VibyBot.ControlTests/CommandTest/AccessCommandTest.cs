@@ -40,7 +40,7 @@ namespace VibyBot.ControlTests.CommandTest
         [TestMethod]
         public void ExecuteTest()
         {
-            string answer = "Доступ  дозволено.";
+            string answer = "Доступ  надано.";
             string message = @"/admin 123";
             long chatId = 777;
             Assert.AreEqual(answer, AccessCommand.Execute(message, chatId));

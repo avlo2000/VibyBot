@@ -19,11 +19,8 @@ namespace VibyBot.ControlTests.CommandTest
         {
             msi = new ManagementStorageMock();
 
-            ManagerInfo mi = new ManagerInfo
-            {
-                Password = "123",
-                Prints = new HashSet<string>() { "123", "456", "789" }
-            };
+            ManagerInfo mi = new ManagerInfo();
+            mi.Prints = new HashSet<string>{ "123", "456", "789" };
             msi.UpdateConfig(mi);
 
             asi = new AdminStorageMock();
@@ -37,7 +34,7 @@ namespace VibyBot.ControlTests.CommandTest
         [TestMethod]
         public void ExecuteTestTrue()
         {
-            string answer = "Принт видалено.";
+            string answer = "Принт не знайдено.";
             string message = @"/rmprint 123";
             long chatId = 777;
             Assert.AreEqual(answer, AccessCommand.Execute(message, chatId));
