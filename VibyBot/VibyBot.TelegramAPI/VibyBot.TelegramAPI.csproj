@@ -201,6 +201,7 @@
     <None Include="Properties\PublishProfiles\TelegramInteractionPOC - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TelegramInteractionPOC20180606044854 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\VibyBot - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\VibyBotShop - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\VibyBotTelegramAPI20180608092943 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\VibyBotTelegramAPI20180611094256 - Web Deploy.pubxml" />
   </ItemGroup>

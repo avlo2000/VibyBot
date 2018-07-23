@@ -2,7 +2,6 @@
 
 namespace VibyBot.Persistence.DTO
 {
-    //for ordering
     public class Order
     { 
         public long OrderId { get; set; }
@@ -16,8 +15,6 @@ namespace VibyBot.Persistence.DTO
         public ClothesColor ClothesColor { get; set; }
 
         public string Name { get; set; }
-
-        public string PhoneNumber { get; set; }
 
         public string Adress { get; set; }
 

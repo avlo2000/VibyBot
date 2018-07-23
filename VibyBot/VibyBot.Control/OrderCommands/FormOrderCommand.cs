@@ -28,9 +28,8 @@ namespace VibyBot.Control.OrderCommands
                 _currentOrder.Ready = true;
                 _orderStorage.UpdateOrder(_currentOrder);
                 answer = new Tuple<string, List<string>>("Ваше замовлення відправлене. Наш менеджер з вами зв'яжеться.", labels);
-
             }
-            return new Answer(answer.Item1, answer.Item2);
+            return new Answer(answer.Item1, answer.Item2) { CurrentOrder = _currentOrder};
         }
         public override bool Contains(string command)
         {

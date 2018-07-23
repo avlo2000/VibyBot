@@ -16,17 +16,18 @@ namespace VibyBot.Control.OrderCommands
         {
             List<string> labels = new List<string>();
             Tuple<string, List<string>> answer = new Tuple<string, List<string>>("Для оформлення замовлення напишіть /start", labels);
-            if (message.Contains("+380") && message.Length == 13)
-            {
-                _currentOrder.PhoneNumber = message;
-                answer = new Tuple<string, List<string>>("Введіть через пробіл свій ПІП(прізвище, ім'я, по батькові) будь ласка" + Environment.NewLine + "Наприклад Петров Петро Петрович. Будь ласка не вводьте жодних додаткових символів", labels);
-            }
+            _currentOrder.PhoneNumber = message;
+            answer = new Tuple<string, List<string>>("Введіть через пробіл свій ПІП(прізвище, ім'я, по батькові) будь ласка" + Environment.NewLine + "Наприклад Петров Петро Петрович. Будь ласка не вводьте жодних додаткових символів", labels);
             return new Answer(answer.Item1, answer.Item2);
         }
 
         public override bool Contains(string command)
         {
-            return command.Contains("+380") && command.Length == 13;
+            var buff = command.Split(' ');
+            command = "";
+            foreach (var str in buff)
+                command += str;
+            return (command.Contains("+380") && command.Length == 13) || (command.Length == 10);
         }
 
         public GetNameCommand(IManagementStorage managementStorage, IAdminStorage userStorage, IOrderStorage orderStorage)
