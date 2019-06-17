@@ -50,6 +50,7 @@
     <Compile Include="AdminCommands\RemovePrintCommand.cs" />
     <Compile Include="AdminCommands\ShowPrintsCommand.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="IOrderSender.cs" />
     <Compile Include="OrderCommands\ChooseColorCommand.cs" />
     <Compile Include="OrderCommands\FormOrderCommand.cs" />
     <Compile Include="OrderCommands\GetAddressComand.cs" />

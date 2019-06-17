@@ -4,6 +4,8 @@ namespace VibyBot.Persistence.DTO
 {
     public class Answer
     {
+        public Order CurrentOrder { get; set; }
+
         public enum State
         {
             AdminAnswer, OrderAnswer

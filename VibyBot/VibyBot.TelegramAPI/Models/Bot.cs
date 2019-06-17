@@ -18,6 +18,10 @@ namespace VibyBot.TelegramAPI.Models
 
         public static IReadOnlyList<ICommand> Commands { get => _commandsList.AsReadOnly(); }
 
+        public static IManagementStorage ManagementStorage { get; private set; }
+        public static IAdminStorage AdminStorage { get; private set; }
+        public static IOrderStorage OrderStorage { get; private set; }
+
         public static void RegistateCommands(IManagementStorage managementStorage, IAdminStorage adminStorage, IOrderStorage orderStorage)
         {
             _commandsList = new List<ICommand>();
@@ -44,6 +48,10 @@ namespace VibyBot.TelegramAPI.Models
             if (_client != null)
                 return _client;
 
+            ManagementStorage = managementStorage;
+            AdminStorage = adminStorage;
+            OrderStorage = orderStorage;
+
             RegistateCommands(managementStorage, adminStorage, orderStorage);
 
             _client = new TelegramBotClient(AppSettings.Key);
@@ -54,7 +62,7 @@ namespace VibyBot.TelegramAPI.Models
             return _client;
         }
 
-        public static TelegramBotClient Get()
+        public static TelegramBotClient GetClient()
         {
             return _client;
         }

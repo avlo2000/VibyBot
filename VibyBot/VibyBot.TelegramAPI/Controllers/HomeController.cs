@@ -28,7 +28,7 @@ namespace VibyBot.TelegramAPI.Controllers
         public async Task<string> Index()
         {
             await Bot.GetAsync(_managementStorage, _adminStorage, _orderStorage);
-            return "VIBY bot";
+            return "<h1>VIBY shop</h1>" + Environment.NewLine + "<h3>VIBY telegram bot</h3>";
         }
     }
 }
